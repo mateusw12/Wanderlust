@@ -1,10 +1,10 @@
-package com.wanderlust;
+package com.wanderlust.wanderlust;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class PadariaApplicationTests {
+class WanderlustApplicationTests {
 
 	@Test
 	void contextLoads() {
