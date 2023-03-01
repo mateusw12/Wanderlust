@@ -1,4 +1,4 @@
-package com.wanderlust.wanderlust.swagger;
+package com.wanderlust.wanderlust.configuration;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
