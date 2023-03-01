@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.mail.MessagingException;
 
 @RestController
-@RequestMapping("/envio-email")
+@RequestMapping("api/envio-email")
 public class SendEmailController {
 
     @Autowired
