@@ -4,6 +4,9 @@ import com.wanderlust.wanderlust.external.aeroDataBox.AeroDataBoxService;
 import com.wanderlust.wanderlust.external.aeroDataBox.model.aiportInfo.Airport;
 import com.wanderlust.wanderlust.external.aeroDataBox.model.aiportRoutesDailyFlight.AiportRoutesDailyFlight;
 import com.wanderlust.wanderlust.external.aeroDataBox.model.airportSearchResult.AirportSearchResult;
+import com.wanderlust.wanderlust.external.flightInfo.FlightInfoService;
+import com.wanderlust.wanderlust.external.flightInfo.model.status.FlighData;
+import com.wanderlust.wanderlust.external.flightInfo.model.status.filter.FlighStatusFilter;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +25,9 @@ public class AirportController {
     @Autowired
     AeroDataBoxService aeroDataBoxService;
 
+    @Autowired
+    FlightInfoService flightInfoService;
+
     @GetMapping("/info/{airportDataCode}")
     @Operation(summary = "Consulta informação do aeroporto pela IATA")
     public Airport findAirportByIataCode(@PathVariable @NotNull @NotBlank String airportDataCode) {
@@ -38,6 +44,18 @@ public class AirportController {
     @Operation(summary = "Consulta rotas de voos do aeroporto pelo ICAO")
     public AiportRoutesDailyFlight findAirportRoutes(@PathVariable @NotNull @NotBlank String airportIcaoCode) {
         return aeroDataBoxService.findAirportRoutes(airportIcaoCode);
+    }
+
+    @PostMapping("/fligh-status")
+    @Operation(summary = "Consulta status dos voos com filtros")
+    public FlighData findFlighsStatus(@RequestBody FlighStatusFilter filter) {
+        return flightInfoService.findFlightsStatus(filter);
+    }
+
+    @PostMapping("/fligh-schedules")
+    @Operation(summary = "Consulta agendameno de voos com filtros")
+    public FlighData findFlightsSchedules(@RequestBody FlighStatusFilter filter) {
+        return flightInfoService.findFlightsSchedules(filter);
     }
 
 }
