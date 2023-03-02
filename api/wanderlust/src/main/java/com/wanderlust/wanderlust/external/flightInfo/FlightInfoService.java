@@ -1,7 +1,7 @@
 package com.wanderlust.wanderlust.external.flightInfo;
 
 import com.wanderlust.wanderlust.external.flightInfo.model.status.FlighData;
-import com.wanderlust.wanderlust.external.flightInfo.model.status.filter.FlighStatusFilter;
+import com.wanderlust.wanderlust.external.flightInfo.filter.FlighStatusFilter;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
