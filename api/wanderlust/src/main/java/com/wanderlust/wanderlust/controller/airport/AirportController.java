@@ -49,7 +49,13 @@ public class AirportController {
     @PostMapping("/fligh-status")
     @Operation(summary = "Consulta status dos voos com filtros")
     public FlighData findFlighsStatus(@RequestBody FlighStatusFilter filter) {
-        return flightInfoService.findFlighsStatus(filter);
+        return flightInfoService.findFlightsStatus(filter);
+    }
+
+    @PostMapping("/fligh-schedules")
+    @Operation(summary = "Consulta agendameno de voos com filtros")
+    public FlighData findFlightsSchedules(@RequestBody FlighStatusFilter filter) {
+        return flightInfoService.findFlightsSchedules(filter);
     }
 
 }
