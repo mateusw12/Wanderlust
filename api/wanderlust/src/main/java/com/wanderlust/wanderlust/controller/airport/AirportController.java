@@ -22,19 +22,19 @@ public class AirportController {
     @Autowired
     AeroDataBoxService aeroDataBoxService;
 
-    @GetMapping("info/{airportDataCode}")
+    @GetMapping("/info/{airportDataCode}")
     @Operation(summary = "Consulta informação do aeroporto pela IATA")
     public Airport findAirportByIataCode(@PathVariable @NotNull @NotBlank String airportDataCode) {
         return aeroDataBoxService.findAirportByIataCode(airportDataCode);
     }
 
-    @GetMapping("search/{airportName}")
+    @GetMapping("/search/{airportName}")
     @Operation(summary = "Consulta informação do aeroporto pelo nome")
     public AirportSearchResult findAirportBySearchName(@PathVariable @NotNull @NotBlank String airportName) {
         return aeroDataBoxService.findAirportBySearchName(airportName);
     }
 
-    @GetMapping("routes/{airportIcaoCode}")
+    @GetMapping("/routes/{airportIcaoCode}")
     @Operation(summary = "Consulta rotas de voos do aeroporto pelo ICAO")
     public AiportRoutesDailyFlight findAirportRoutes(@PathVariable @NotNull @NotBlank String airportIcaoCode) {
         return aeroDataBoxService.findAirportRoutes(airportIcaoCode);
