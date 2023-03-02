@@ -12,7 +12,7 @@ import com.wanderlust.wanderlust.external.airportTimeTable.model.airports.Airpor
 import com.wanderlust.wanderlust.external.airportTimeTable.model.country.AirportResponse;
 import com.wanderlust.wanderlust.external.flightInfo.FlightInfoService;
 import com.wanderlust.wanderlust.external.flightInfo.model.status.FlighData;
-import com.wanderlust.wanderlust.external.flightInfo.model.status.filter.FlighStatusFilter;
+import com.wanderlust.wanderlust.external.flightInfo.filter.FlighStatusFilter;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;

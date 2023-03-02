@@ -1,4 +1,4 @@
-package com.wanderlust.wanderlust.external.flightInfo.model.status.filter;
+package com.wanderlust.wanderlust.external.flightInfo.filter;
 
 import lombok.Data;
 
