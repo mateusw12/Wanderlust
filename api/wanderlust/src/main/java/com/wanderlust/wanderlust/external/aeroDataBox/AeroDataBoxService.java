@@ -3,7 +3,6 @@ package com.wanderlust.wanderlust.external.aeroDataBox;
 import com.wanderlust.wanderlust.external.aeroDataBox.model.aiportInfo.Airport;
 import com.wanderlust.wanderlust.external.aeroDataBox.model.aiportRoutesDailyFlight.AiportRoutesDailyFlight;
 import com.wanderlust.wanderlust.external.aeroDataBox.model.airportSearchResult.AirportSearchResult;
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.http.HttpHeaders;
