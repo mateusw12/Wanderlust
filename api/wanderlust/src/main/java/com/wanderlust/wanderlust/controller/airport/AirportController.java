@@ -13,6 +13,9 @@ import com.wanderlust.wanderlust.external.airportTimeTable.model.country.Airport
 import com.wanderlust.wanderlust.external.flightInfo.FlightInfoService;
 import com.wanderlust.wanderlust.external.flightInfo.model.status.FlighData;
 import com.wanderlust.wanderlust.external.flightInfo.filter.FlighStatusFilter;
+import com.wanderlust.wanderlust.external.ryanair.RyanairService;
+import com.wanderlust.wanderlust.external.ryanair.model.RyanairAirportInfo;
+import com.wanderlust.wanderlust.external.ryanair.model.RyanairAirportRoutes;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +40,9 @@ public class AirportController {
 
     @Autowired
     AirportTimeTableService airportTimeTableService;
+
+    @Autowired
+    RyanairService ryanairService;
 
     @GetMapping("/info/{airportDataCode}")
     @Operation(summary = "Consulta informação do aeroporto pela IATA")
@@ -78,6 +84,18 @@ public class AirportController {
     @Operation(summary = "Consulta codigos iata dos países")
     public List<AirportCountry> findAirportsByCountry() throws JsonProcessingException {
         return airportTimeTableService.findAIataCodeByCountry();
+    }
+
+    @GetMapping("/ryanair-airports")
+    @Operation(summary = "Consulta aeroportos da rayanair")
+    public List<RyanairAirportInfo> findRyanairAirports() {
+        return ryanairService.findAirports();
+    }
+
+    @GetMapping("/ryanair-routes/{originIataCode}")
+    @Operation(summary = "Consulta rotas da rayanair")
+    public List<RyanairAirportRoutes> findRyanairAirports(@PathVariable @NotNull @NotBlank String originIataCode) {
+        return ryanairService.findRoutes(originIataCode);
     }
 
     @PostMapping("/flight-status")
