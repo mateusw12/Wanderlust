@@ -33,16 +33,16 @@ import java.util.List;
 public class AirportController {
 
     @Autowired
-    AeroDataBoxService aeroDataBoxService;
+    private AeroDataBoxService aeroDataBoxService;
 
     @Autowired
-    FlightInfoService flightInfoService;
+    private FlightInfoService flightInfoService;
 
     @Autowired
-    AirportTimeTableService airportTimeTableService;
+    private AirportTimeTableService airportTimeTableService;
 
     @Autowired
-    RyanairService ryanairService;
+    private RyanairService ryanairService;
 
     @GetMapping("/info/{airportDataCode}")
     @Operation(summary = "Consulta informação do aeroporto pela IATA")
