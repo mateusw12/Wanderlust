@@ -44,19 +44,19 @@ public class AirportController {
     @Autowired
     private RyanairService ryanairService;
 
-    @GetMapping("/info/{airportDataCode}")
+    @GetMapping("/aero-data/info/{airportDataCode}")
     @Operation(summary = "Consulta informação do aeroporto pela IATA")
     public Airport findAirportByIataCode(@PathVariable @NotNull @NotBlank String airportDataCode) {
         return aeroDataBoxService.findAirportByIataCode(airportDataCode);
     }
 
-    @GetMapping("/search/{airportName}")
+    @GetMapping("/aero-data/search/{airportName}")
     @Operation(summary = "Consulta informação do aeroporto pelo nome")
     public AirportSearchResult findAirportBySearchName(@PathVariable @NotNull @NotBlank String airportName) {
         return aeroDataBoxService.findAirportBySearchName(airportName);
     }
 
-    @GetMapping("/routes/{airportIcaoCode}")
+    @GetMapping("/aero-data/routes/{airportIcaoCode}")
     @Operation(summary = "Consulta rotas de voos do aeroporto pelo ICAO")
     public AiportRoutesDailyFlight findAirportRoutes(@PathVariable @NotNull @NotBlank String airportIcaoCode) {
         return aeroDataBoxService.findAirportRoutes(airportIcaoCode);
