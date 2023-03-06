@@ -1,7 +1,8 @@
 package com.wanderlust.wanderlust.controller.hotel;
 
 import com.wanderlust.wanderlust.external.hotel.airBnb.AirBnbService;
-import com.wanderlust.wanderlust.external.hotel.airBnb.model.category.AirBnbCategory;
+import com.wanderlust.wanderlust.external.hotel.airBnb.model.language.AirBnbLanguage;
+import com.wanderlust.wanderlust.external.hotel.airBnb.model.currency.AirBnbCurrency;
 import com.wanderlust.wanderlust.external.hotel.airBnb.model.destination.AirBnbLocation;
 import com.wanderlust.wanderlust.external.hotel.airBnb.model.property.AirBnbPropertyFilter;
 import com.wanderlust.wanderlust.external.hotel.airBnb.model.property.AirBnbPropertyLocation;
@@ -84,10 +85,16 @@ public class HotelQueryController {
         return airBnbService.findSearchPropertyPlace(filter);
     }
 
-    @GetMapping("/airbnb/categories")
-    @Operation(summary = "Consulta categorias de hoteis do air bnb")
-    public AirBnbCategory findCategory() {
-        return airBnbService.findCategory();
+    @GetMapping("/airbnb/language")
+    @Operation(summary = "Consulta idioma de hoteis do air bnb")
+    public AirBnbLanguage findCategory() {
+        return airBnbService.findLanguage();
+    }
+
+    @GetMapping("/airbnb/currency")
+    @Operation(summary = "Consulta moedas de hoteis do air bnb")
+    public AirBnbCurrency findCurrency() {
+        return airBnbService.findCurrency();
     }
 
 }

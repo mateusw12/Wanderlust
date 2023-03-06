@@ -1,6 +1,7 @@
 package com.wanderlust.wanderlust.external.hotel.airBnb;
 
-import com.wanderlust.wanderlust.external.hotel.airBnb.model.category.AirBnbCategory;
+import com.wanderlust.wanderlust.external.hotel.airBnb.model.language.AirBnbLanguage;
+import com.wanderlust.wanderlust.external.hotel.airBnb.model.currency.AirBnbCurrency;
 import com.wanderlust.wanderlust.external.hotel.airBnb.model.destination.AirBnbLocation;
 import com.wanderlust.wanderlust.external.hotel.airBnb.model.property.AirBnbPropertyFilter;
 import com.wanderlust.wanderlust.external.hotel.airBnb.model.property.AirBnbPropertyLocation;
@@ -193,7 +194,7 @@ public class AirBnbService {
         return airBnbPropertyLocation;
     }
 
-    public AirBnbCategory findCategory() {
+    public AirBnbLanguage findLanguage() {
         String apiUrl = "https://airbnb19.p.rapidapi.com/api/v1/getCategory";
 
         RestTemplate restTemplate = new RestTemplate();
@@ -203,15 +204,36 @@ public class AirBnbService {
         headers.set("X-RapidAPI-Host", "airbnb19.p.rapidapi.com");
         HttpEntity<String> entity = new HttpEntity<>(headers);
 
-        ResponseEntity<AirBnbCategory> response;
+        ResponseEntity<AirBnbLanguage> response;
         response = restTemplate.exchange(
                 apiUrl,
                 HttpMethod.GET,
                 entity,
-                AirBnbCategory.class
+                AirBnbLanguage.class
         );
-        AirBnbCategory airBnbCategory = response.getBody();
+        AirBnbLanguage airBnbCategory = response.getBody();
         return airBnbCategory;
+    }
+
+    public AirBnbCurrency findCurrency() {
+        String apiUrl = "https://airbnb19.p.rapidapi.com/api/v1/getCurrency";
+
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+
+        headers.set("X-RapidAPI-Key", apiKey);
+        headers.set("X-RapidAPI-Host", "airbnb19.p.rapidapi.com");
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+
+        ResponseEntity<AirBnbCurrency> response;
+        response = restTemplate.exchange(
+                apiUrl,
+                HttpMethod.GET,
+                entity,
+                AirBnbCurrency.class
+        );
+        AirBnbCurrency airBnbCurrency = response.getBody();
+        return airBnbCurrency;
     }
 
 }

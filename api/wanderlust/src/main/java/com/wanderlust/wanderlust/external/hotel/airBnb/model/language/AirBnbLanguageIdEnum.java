@@ -1,6 +1,6 @@
-package com.wanderlust.wanderlust.external.hotel.airBnb.model.category;
+package com.wanderlust.wanderlust.external.hotel.airBnb.model.language;
 
-public enum AirBnbCategoryIdEnum {
+public enum AirBnbLanguageIdEnum {
 
     AR_SA("ar-SA", "Arabic (Saudi Arabia)"),
     ZH_CN("zh-CN", "Chinese (China)"),
@@ -43,7 +43,7 @@ public enum AirBnbCategoryIdEnum {
     private final String id;
     private final String title;
 
-    private AirBnbCategoryIdEnum(String id, String title) {
+    private AirBnbLanguageIdEnum(String id, String title) {
         this.id = id;
         this.title = title;
     }
