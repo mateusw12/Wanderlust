@@ -14,6 +14,16 @@ import com.wanderlust.wanderlust.external.hotel.booking.model.description.Bookin
 import com.wanderlust.wanderlust.external.hotel.booking.model.image.BookingHotelImage;
 import com.wanderlust.wanderlust.external.hotel.booking.model.location.BookingHotelLocation;
 import com.wanderlust.wanderlust.external.hotel.booking.model.payment.BookingHotelPayment;
+import com.wanderlust.wanderlust.external.hotel.hotelProvider.HotelProviderService;
+import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.reviewList.HotelProviderReviewListFilter;
+import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.hotel.HotelProviderSearch;
+import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.hotel.filter.HotelProviderSearchFilter;
+import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.region.RegionSearch;
+import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.reviewList.HotelProviderReviewList;
+import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.reviewScore.HotelProviderReviewScore;
+import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.reviewScore.HotelProviderReviewScoreFilter;
+import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.summary.HotelProviderSummary;
+import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.summary.HotelProviderSummaryFilter;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +46,9 @@ public class HotelQueryController {
 
     @Autowired
     private AirBnbService airBnbService;
+
+    @Autowired
+    private HotelProviderService hotelProviderService;
 
     @GetMapping("/location/{cityName}")
     @Operation(summary = "Consulta hotéis por cidade")
@@ -102,6 +115,37 @@ public class HotelQueryController {
     @Operation(summary = "Consulta categorias de hoteis do air bnb")
     public AirBnbCategory findCategory() {
         return airBnbService.findCategory();
+    }
+
+    @GetMapping("/hotel-provider/region/{cityName}/{country}")
+    @Operation(summary = "Consulta regiões de hoteis")
+    public RegionSearch findRegionSearch(@PathVariable @NotNull @NotBlank String cityName,
+                                         @PathVariable @NotNull @NotBlank String country) {
+        return hotelProviderService.findRegionSearch(cityName, country);
+    }
+
+    @PostMapping("/hotel-provider/hotel-search")
+    @Operation(summary = "Consulta hoteis com filtro")
+    public HotelProviderSearch findHotelSearch(@RequestBody @NotNull HotelProviderSearchFilter filter) {
+        return hotelProviderService.findHotelSearch(filter);
+    }
+
+    @PostMapping("/hotel-provider/score")
+    @Operation(summary = "Consulta score do hotel com filtro")
+    public HotelProviderReviewScore findReviewScore(@RequestBody @NotNull HotelProviderReviewScoreFilter filter) {
+        return hotelProviderService.findReviewScore(filter);
+    }
+
+    @PostMapping("/hotel-provider/review-list")
+    @Operation(summary = "Consulta lista de revisões do hotel com filtro")
+    public HotelProviderReviewList findReviewList(@RequestBody @NotNull HotelProviderReviewListFilter filter) {
+        return hotelProviderService.findReviewList(filter);
+    }
+
+    @PostMapping("/hotel-provider/summary")
+    @Operation(summary = "Consulta lista de sumário do hotel com filtro")
+    public HotelProviderSummary findHotelSummary(@RequestBody @NotNull HotelProviderSummaryFilter filter) {
+        return hotelProviderService.findHotelSummary(filter);
     }
 
 }
