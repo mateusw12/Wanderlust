@@ -27,7 +27,7 @@ public class RentalCarController {
     @Autowired
     private CarDataService carDataService;
 
-    @GetMapping("/rental-car/{cityName}")
+    @GetMapping("/booking/rental-car/{cityName}")
     @Operation(summary = "Consulta carros para aluguel por cidade")
     public List<BookingRentalCar> findRentalCarByCityName(@PathVariable @NotNull @NotBlank String cityName) {
         return bookingRentalCarService.findRentalCarByCityName(cityName);
