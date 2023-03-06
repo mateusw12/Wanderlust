@@ -15,6 +15,8 @@ import com.wanderlust.wanderlust.external.hotel.booking.model.image.BookingHotel
 import com.wanderlust.wanderlust.external.hotel.booking.model.location.BookingHotelLocation;
 import com.wanderlust.wanderlust.external.hotel.booking.model.payment.BookingHotelPayment;
 import com.wanderlust.wanderlust.external.hotel.hotelProvider.HotelProviderService;
+import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.hotel.HotelProviderSearch;
+import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.hotel.filter.HotelProviderSearchFilter;
 import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.region.RegionSearch;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -114,6 +116,12 @@ public class HotelQueryController {
     public RegionSearch findRegionSearch(@PathVariable @NotNull @NotBlank String cityName,
                                          @PathVariable @NotNull @NotBlank String country) {
         return hotelProviderService.findRegionSearch(cityName, country);
+    }
+
+    @PostMapping("/hotel-provider/hotel-search")
+    @Operation(summary = "Consulta hoteis com filtro")
+    public HotelProviderSearch findHotelSearch(@RequestBody HotelProviderSearchFilter filter) {
+        return hotelProviderService.findHotelSearch(filter);
     }
 
 }
