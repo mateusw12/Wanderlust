@@ -14,6 +14,8 @@ import com.wanderlust.wanderlust.external.hotel.booking.model.description.Bookin
 import com.wanderlust.wanderlust.external.hotel.booking.model.image.BookingHotelImage;
 import com.wanderlust.wanderlust.external.hotel.booking.model.location.BookingHotelLocation;
 import com.wanderlust.wanderlust.external.hotel.booking.model.payment.BookingHotelPayment;
+import com.wanderlust.wanderlust.external.hotel.hotelProvider.HotelProviderService;
+import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.region.RegionSearch;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +38,9 @@ public class HotelQueryController {
 
     @Autowired
     private AirBnbService airBnbService;
+
+    @Autowired
+    private HotelProviderService hotelProviderService;
 
     @GetMapping("/location/{cityName}")
     @Operation(summary = "Consulta hotéis por cidade")
@@ -102,6 +107,13 @@ public class HotelQueryController {
     @Operation(summary = "Consulta categorias de hoteis do air bnb")
     public AirBnbCategory findCategory() {
         return airBnbService.findCategory();
+    }
+
+    @GetMapping("/hotel-provider/region/{cityName}/{country}")
+    @Operation(summary = "Consulta regiões de hoteis")
+    public RegionSearch findRegionSearch(@PathVariable @NotNull @NotBlank String cityName,
+                                         @PathVariable @NotNull @NotBlank String country) {
+        return hotelProviderService.findRegionSearch(cityName, country);
     }
 
 }
