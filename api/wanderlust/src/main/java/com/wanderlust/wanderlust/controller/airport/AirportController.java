@@ -44,67 +44,67 @@ public class AirportController {
     @Autowired
     private RyanairService ryanairService;
 
-    @GetMapping("/info/{airportDataCode}")
+    @GetMapping("/aero-data/info/{airportDataCode}")
     @Operation(summary = "Consulta informação do aeroporto pela IATA")
     public Airport findAirportByIataCode(@PathVariable @NotNull @NotBlank String airportDataCode) {
         return aeroDataBoxService.findAirportByIataCode(airportDataCode);
     }
 
-    @GetMapping("/search/{airportName}")
+    @GetMapping("/aero-data/search/{airportName}")
     @Operation(summary = "Consulta informação do aeroporto pelo nome")
     public AirportSearchResult findAirportBySearchName(@PathVariable @NotNull @NotBlank String airportName) {
         return aeroDataBoxService.findAirportBySearchName(airportName);
     }
 
-    @GetMapping("/routes/{airportIcaoCode}")
+    @GetMapping("/aero-data/routes/{airportIcaoCode}")
     @Operation(summary = "Consulta rotas de voos do aeroporto pelo ICAO")
     public AiportRoutesDailyFlight findAirportRoutes(@PathVariable @NotNull @NotBlank String airportIcaoCode) {
         return aeroDataBoxService.findAirportRoutes(airportIcaoCode);
     }
 
-    @GetMapping
+    @GetMapping("/airport-time")
     @Operation(summary = "Consulta todos os aeroportos")
     public List<AirportTimeTable> findAirports() throws JsonProcessingException {
         return airportTimeTableService.findAirports();
     }
 
-    @GetMapping("/country/{countryIataCode}")
+    @GetMapping("/airport-time/country/{countryIataCode}")
     @Operation(summary = "Consulta todos os aeroportos")
     public AirportResponse findAirports(@PathVariable @NotNull @NotBlank String countryIataCode) throws JsonProcessingException {
         return airportTimeTableService.findAirportsByCountry(countryIataCode);
     }
 
-    @GetMapping("/cities")
+    @GetMapping("/airport-time/cities")
     @Operation(summary = "Consulta cidades principais com aeroportos")
     public List<AirportCity> findAirportCity() throws JsonProcessingException {
         return airportTimeTableService.findAirportCity();
     }
 
-    @GetMapping("/countries")
+    @GetMapping("/airport-time/countries")
     @Operation(summary = "Consulta codigos iata dos países")
     public List<AirportCountry> findAirportsByCountry() throws JsonProcessingException {
         return airportTimeTableService.findAIataCodeByCountry();
     }
 
-    @GetMapping("/ryanair-airports")
+    @GetMapping("/ryanair/airports")
     @Operation(summary = "Consulta aeroportos da rayanair")
     public List<RyanairAirportInfo> findRyanairAirports() {
         return ryanairService.findAirports();
     }
 
-    @GetMapping("/ryanair-routes/{originIataCode}")
+    @GetMapping("/ryanair/routes/{originIataCode}")
     @Operation(summary = "Consulta rotas da rayanair")
     public List<RyanairAirportRoutes> findRyanairAirports(@PathVariable @NotNull @NotBlank String originIataCode) {
         return ryanairService.findRoutes(originIataCode);
     }
 
-    @PostMapping("/flight-status")
+    @PostMapping("/flight-info/status")
     @Operation(summary = "Consulta status dos voos com filtros")
     public FlighData findFlighsStatus(@RequestBody FlighStatusFilter filter) {
         return flightInfoService.findFlightsStatus(filter);
     }
 
-    @PostMapping("/fligh-schedules")
+    @PostMapping("/flight-info/schedules")
     @Operation(summary = "Consulta agendamento de voos com filtros")
     public FlighData findFlightsSchedules(@RequestBody FlighStatusFilter filter) {
         return flightInfoService.findFlightsSchedules(filter);

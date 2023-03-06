@@ -50,31 +50,31 @@ public class HotelQueryController {
     @Autowired
     private HotelProviderService hotelProviderService;
 
-    @GetMapping("/location/{cityName}")
+    @GetMapping("/booking/location/{cityName}")
     @Operation(summary = "Consulta hotéis por cidade")
     public List<BookingHotelLocation> findHotelsByLocation(@PathVariable @NotNull @NotBlank String cityName) {
         return bookingHotelService.findHotelsByLocation(cityName);
     }
 
-    @GetMapping("/id/{hotelId}")
+    @GetMapping("/booking/id/{hotelId}")
     @Operation(summary = "Consulta dados do hotel por código")
     public BookingHotel findHotelById(@PathVariable @NotNull @Positive Long hotelId) {
         return bookingHotelService.findHotelById(hotelId);
     }
 
-    @GetMapping("/image/{hotelId}")
+    @GetMapping("/booking/image/{hotelId}")
     @Operation(summary = "Consulta imagem do hotel por código")
     public List<BookingHotelImage> findImageHotelById(@PathVariable @NotNull @Positive Long hotelId) {
         return bookingHotelService.findImageHotelById(hotelId);
     }
 
-    @GetMapping("/payment/{hotelId}")
+    @GetMapping("/booking/payment/{hotelId}")
     @Operation(summary = "Consulta tipo de pagamento do hotel por código")
     public List<BookingHotelPayment> findPaymentByHotelId(@PathVariable @NotNull @Positive Long hotelId) {
         return bookingHotelService.findPaymentByHotelId(hotelId);
     }
 
-    @GetMapping("/description/{hotelId}")
+    @GetMapping("/booking/description/{hotelId}")
     @Operation(summary = "Consulta descrição do hotel por código")
     public BookingHotelDescription findDescriptionByHotelId(@PathVariable @NotNull @Positive Long hotelId) {
         return bookingHotelService.findDescriptionByHotelId(hotelId);
