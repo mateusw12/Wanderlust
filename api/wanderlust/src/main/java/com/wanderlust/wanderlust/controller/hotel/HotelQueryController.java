@@ -2,6 +2,7 @@ package com.wanderlust.wanderlust.controller.hotel;
 
 import com.wanderlust.wanderlust.external.hotel.booking.BookingHotelService;
 import com.wanderlust.wanderlust.external.hotel.booking.model.data.BookingHotel;
+import com.wanderlust.wanderlust.external.hotel.booking.model.description.BookingHotelDescription;
 import com.wanderlust.wanderlust.external.hotel.booking.model.image.BookingHotelImage;
 import com.wanderlust.wanderlust.external.hotel.booking.model.location.BookingHotelLocation;
 import com.wanderlust.wanderlust.external.hotel.booking.model.payment.BookingHotelPayment;
@@ -50,6 +51,12 @@ public class HotelQueryController {
     @Operation(summary = "Consulta tipo de pagamento do hotel por código")
     public List<BookingHotelPayment> findPaymentByHotelId(@PathVariable @NotNull @Positive Long hotelId) {
         return bookingHotelService.findPaymentByHotelId(hotelId);
+    }
+
+    @GetMapping("/description/{hotelId}")
+    @Operation(summary = "Consulta descrição do hotel por código")
+    public BookingHotelDescription findDescriptionByHotelId(@PathVariable @NotNull @Positive Long hotelId) {
+        return bookingHotelService.findDescriptionByHotelId(hotelId);
     }
 
 }

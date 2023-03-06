@@ -1,6 +1,7 @@
 package com.wanderlust.wanderlust.external.hotel.booking;
 
 import com.wanderlust.wanderlust.external.hotel.booking.model.data.BookingHotel;
+import com.wanderlust.wanderlust.external.hotel.booking.model.description.BookingHotelDescription;
 import com.wanderlust.wanderlust.external.hotel.booking.model.image.BookingHotelImage;
 import com.wanderlust.wanderlust.external.hotel.booking.model.location.BookingHotelLocation;
 import com.wanderlust.wanderlust.external.hotel.booking.model.payment.BookingHotelPayment;
@@ -123,6 +124,27 @@ public class BookingHotelService {
         );
         BookingHotelQuestion bookingHotelQuestion = response.getBody();
         return bookingHotelQuestion;
+    }
+
+    public BookingHotelDescription findDescriptionByHotelId(Long hotelId) {
+        String apiUrl = "https://booking-com.p.rapidapi.com/v1/hotels/description?locale=pt-br&hotel_id=="+hotelId;
+
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+
+        headers.set("X-RapidAPI-Key", apiKey);
+        headers.set("X-RapidAPI-Host", "booking-com.p.rapidapi.com");
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+
+        ResponseEntity<BookingHotelDescription> response;
+        response = restTemplate.exchange(
+                apiUrl,
+                HttpMethod.GET,
+                entity,
+                BookingHotelDescription.class
+        );
+        BookingHotelDescription bookingHotelDescription = response.getBody();
+        return bookingHotelDescription;
     }
 
     public List<BookingHotelPayment> findPaymentByHotelId(Long hotelId) {
