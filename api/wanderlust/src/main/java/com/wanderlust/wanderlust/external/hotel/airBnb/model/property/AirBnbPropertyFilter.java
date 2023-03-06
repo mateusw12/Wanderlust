@@ -17,5 +17,6 @@ public class AirBnbPropertyFilter {
     private Date checkout;
     private Double priceMin;
     private Double priceMax;
+    private String city;
 
 }

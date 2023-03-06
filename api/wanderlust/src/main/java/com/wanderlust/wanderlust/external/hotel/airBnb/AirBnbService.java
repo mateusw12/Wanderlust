@@ -3,6 +3,7 @@ package com.wanderlust.wanderlust.external.hotel.airBnb;
 import com.wanderlust.wanderlust.external.hotel.airBnb.model.destination.AirBnbLocation;
 import com.wanderlust.wanderlust.external.hotel.airBnb.model.property.AirBnbPropertyFilter;
 import com.wanderlust.wanderlust.external.hotel.airBnb.model.property.AirBnbPropertyLocation;
+import com.wanderlust.wanderlust.external.hotel.airBnb.model.propertyPlace.AirBnbPropertyLocationPlace;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -113,6 +114,81 @@ public class AirBnbService {
                 AirBnbPropertyLocation.class
         );
         AirBnbPropertyLocation airBnbPropertyLocation = response.getBody();
+        return airBnbPropertyLocation;
+    }
+
+    public AirBnbPropertyLocationPlace findSearchPropertyPlace(AirBnbPropertyFilter filter) {
+        String apiUrl = "https://airbnb19.p.rapidapi.com/api/v1/searchPropertyByPlace?";
+
+        if(filter.getCategory() != null){
+            apiUrl = apiUrl+"category="+filter.getCategory();
+            apiUrl = apiUrl+"totalRecords=10";
+        }
+
+        if(filter.getCurrency() != null){
+            apiUrl = apiUrl+"&currency="+filter.getCurrency();
+        }
+
+        if(filter.getAdults() >0){
+            apiUrl = apiUrl+"&adults="+filter.getAdults();
+        }
+
+        if(filter.getChildren() >0){
+            apiUrl = apiUrl+"&children="+filter.getChildren();
+        }
+
+        if(filter.getAdults() >0){
+            apiUrl = apiUrl+"&adults="+filter.getAdults();
+        }
+
+        if(filter.getAdults() >0){
+            apiUrl = apiUrl+"&adults="+filter.getAdults();
+        }
+
+        if(filter.getAdults() >0){
+            apiUrl = apiUrl+"&adults="+filter.getAdults();
+        }
+
+        if(filter.getInfants() >0){
+            apiUrl = apiUrl+"&infants="+filter.getInfants();
+        }
+
+        if(filter.getPets() >0){
+            apiUrl = apiUrl+"&pets="+filter.getPets();
+        }
+
+
+        if(filter.getCheckin() != null){
+            apiUrl = apiUrl+"&checkin="+filter.getCheckin();
+        }
+
+        if(filter.getCheckout() != null){
+            apiUrl = apiUrl+"&checkout="+filter.getPets();
+        }
+
+        if(filter.getPriceMin() >0){
+            apiUrl = apiUrl+"&priceMin="+filter.getPriceMin();
+        }
+
+        if(filter.getPriceMax() >0){
+            apiUrl = apiUrl+"&priceMax="+filter.getPriceMax();
+        }
+
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+
+        headers.set("X-RapidAPI-Key", apiKey);
+        headers.set("X-RapidAPI-Host", "airbnb19.p.rapidapi.com");
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+
+        ResponseEntity<AirBnbPropertyLocationPlace> response;
+        response = restTemplate.exchange(
+                apiUrl,
+                HttpMethod.GET,
+                entity,
+                AirBnbPropertyLocationPlace.class
+        );
+        AirBnbPropertyLocationPlace airBnbPropertyLocation = response.getBody();
         return airBnbPropertyLocation;
     }
 

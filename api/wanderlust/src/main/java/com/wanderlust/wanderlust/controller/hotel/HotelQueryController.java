@@ -4,6 +4,7 @@ import com.wanderlust.wanderlust.external.hotel.airBnb.AirBnbService;
 import com.wanderlust.wanderlust.external.hotel.airBnb.model.destination.AirBnbLocation;
 import com.wanderlust.wanderlust.external.hotel.airBnb.model.property.AirBnbPropertyFilter;
 import com.wanderlust.wanderlust.external.hotel.airBnb.model.property.AirBnbPropertyLocation;
+import com.wanderlust.wanderlust.external.hotel.airBnb.model.propertyPlace.AirBnbPropertyLocationPlace;
 import com.wanderlust.wanderlust.external.hotel.booking.BookingHotelService;
 import com.wanderlust.wanderlust.external.hotel.booking.model.data.BookingHotel;
 import com.wanderlust.wanderlust.external.hotel.booking.model.description.BookingHotelDescription;
@@ -74,6 +75,12 @@ public class HotelQueryController {
     @Operation(summary = "Consulta hotel por filtro")
     public AirBnbPropertyLocation findSearchProperty(@RequestBody @NotNull AirBnbPropertyFilter filter) {
         return airBnbService.findSearchProperty(filter);
+    }
+
+    @PostMapping("/airbnb/property-place")
+    @Operation(summary = "Consulta hotel e lugar por filtro")
+    public AirBnbPropertyLocationPlace findSearchPropertyPlace(@RequestBody @NotNull AirBnbPropertyFilter filter) {
+        return airBnbService.findSearchPropertyPlace(filter);
     }
 
 }
