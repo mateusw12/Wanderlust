@@ -62,25 +62,25 @@ public class AirportController {
         return aeroDataBoxService.findAirportRoutes(airportIcaoCode);
     }
 
-    @GetMapping
+    @GetMapping("/airport-time")
     @Operation(summary = "Consulta todos os aeroportos")
     public List<AirportTimeTable> findAirports() throws JsonProcessingException {
         return airportTimeTableService.findAirports();
     }
 
-    @GetMapping("/country/{countryIataCode}")
+    @GetMapping("/airport-time/country/{countryIataCode}")
     @Operation(summary = "Consulta todos os aeroportos")
     public AirportResponse findAirports(@PathVariable @NotNull @NotBlank String countryIataCode) throws JsonProcessingException {
         return airportTimeTableService.findAirportsByCountry(countryIataCode);
     }
 
-    @GetMapping("/cities")
+    @GetMapping("/airport-time/cities")
     @Operation(summary = "Consulta cidades principais com aeroportos")
     public List<AirportCity> findAirportCity() throws JsonProcessingException {
         return airportTimeTableService.findAirportCity();
     }
 
-    @GetMapping("/countries")
+    @GetMapping("/airport-time/countries")
     @Operation(summary = "Consulta codigos iata dos países")
     public List<AirportCountry> findAirportsByCountry() throws JsonProcessingException {
         return airportTimeTableService.findAIataCodeByCountry();
