@@ -33,7 +33,7 @@ public class RentalCarController {
         return bookingRentalCarService.findRentalCarByCityName(cityName);
     }
 
-    @PostMapping("/filter")
+    @PostMapping("/car-data/filter")
     @Operation(summary = "Consulta carros com filtros")
     public List<CarData> findCarsByFilter(@RequestBody @NotNull @NotBlank CarDataFilter filter) {
         return carDataService.findCarsByFilter(filter);
