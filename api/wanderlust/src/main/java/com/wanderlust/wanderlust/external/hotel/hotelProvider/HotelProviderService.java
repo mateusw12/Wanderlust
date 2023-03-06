@@ -1,12 +1,14 @@
 package com.wanderlust.wanderlust.external.hotel.hotelProvider;
 
-import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.HotelProviderReviewListFilter;
+import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.reviewList.HotelProviderReviewListFilter;
 import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.hotel.HotelProviderSearch;
 import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.hotel.filter.HotelProviderSearchFilter;
 import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.region.RegionSearch;
 import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.reviewList.HotelProviderReviewList;
 import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.reviewScore.HotelProviderReviewScore;
 import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.reviewScore.HotelProviderReviewScoreFilter;
+import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.summary.HotelProviderSummary;
+import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.summary.HotelProviderSummaryFilter;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -120,6 +122,39 @@ public class HotelProviderService {
         );
         HotelProviderReviewList hotelProviderReviewList = response.getBody();
         return hotelProviderReviewList;
+    }
+
+    public HotelProviderSummary findHotelSummary(HotelProviderSummaryFilter filter) {
+        String apiUrl = "https://hotels-com-provider.p.rapidapi.com/v2/hotels/summary?";
+
+        if(filter.getDomain() != null){
+            apiUrl = apiUrl+"domain="+filter.getDomain();
+        }
+
+        if(filter.getLocale() != null){
+            apiUrl = apiUrl+"&locale=="+filter.getLocale();
+        }
+
+        if(filter.getHotelId() > 0){
+            apiUrl = apiUrl+"&hotel_id="+filter.getHotelId();
+        }
+
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+
+        headers.set("X-RapidAPI-Key", apiKey);
+        headers.set("X-RapidAPI-Host", "hotels-com-provider.p.rapidapi.com");
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+
+        ResponseEntity<HotelProviderSummary> response;
+        response = restTemplate.exchange(
+                apiUrl,
+                HttpMethod.GET,
+                entity,
+                HotelProviderSummary.class
+        );
+        HotelProviderSummary hotelProviderSummary = response.getBody();
+        return hotelProviderSummary;
     }
 
     public HotelProviderReviewScore findReviewScore(HotelProviderReviewScoreFilter filter) {

@@ -1,4 +1,4 @@
-package com.wanderlust.wanderlust.external.hotel.hotelProvider.model;
+package com.wanderlust.wanderlust.external.hotel.hotelProvider.model.reviewList;
 
 import lombok.Data;
 
