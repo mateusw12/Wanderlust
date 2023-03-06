@@ -15,9 +15,13 @@ import com.wanderlust.wanderlust.external.hotel.booking.model.image.BookingHotel
 import com.wanderlust.wanderlust.external.hotel.booking.model.location.BookingHotelLocation;
 import com.wanderlust.wanderlust.external.hotel.booking.model.payment.BookingHotelPayment;
 import com.wanderlust.wanderlust.external.hotel.hotelProvider.HotelProviderService;
+import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.HotelProviderReviewListFilter;
 import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.hotel.HotelProviderSearch;
 import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.hotel.filter.HotelProviderSearchFilter;
 import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.region.RegionSearch;
+import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.reviewList.HotelProviderReviewList;
+import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.reviewScore.HotelProviderReviewScore;
+import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.reviewScore.HotelProviderReviewScoreFilter;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -120,8 +124,20 @@ public class HotelQueryController {
 
     @PostMapping("/hotel-provider/hotel-search")
     @Operation(summary = "Consulta hoteis com filtro")
-    public HotelProviderSearch findHotelSearch(@RequestBody HotelProviderSearchFilter filter) {
+    public HotelProviderSearch findHotelSearch(@RequestBody @NotNull HotelProviderSearchFilter filter) {
         return hotelProviderService.findHotelSearch(filter);
+    }
+
+    @PostMapping("/hotel-provider/score")
+    @Operation(summary = "Consulta score do hotel com filtro")
+    public HotelProviderReviewScore findReviewScore(@RequestBody @NotNull HotelProviderReviewScoreFilter filter) {
+        return hotelProviderService.findReviewScore(filter);
+    }
+
+    @PostMapping("/hotel-provider/review-list")
+    @Operation(summary = "Consulta lista de revisões do hotel com filtro")
+    public HotelProviderReviewList findReviewList(@RequestBody @NotNull HotelProviderReviewListFilter filter) {
+        return hotelProviderService.findReviewList(filter);
     }
 
 }

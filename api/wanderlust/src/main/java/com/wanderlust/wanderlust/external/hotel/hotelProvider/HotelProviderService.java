@@ -1,8 +1,10 @@
 package com.wanderlust.wanderlust.external.hotel.hotelProvider;
 
+import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.HotelProviderReviewListFilter;
 import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.hotel.HotelProviderSearch;
 import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.hotel.filter.HotelProviderSearchFilter;
 import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.region.RegionSearch;
+import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.reviewList.HotelProviderReviewList;
 import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.reviewScore.HotelProviderReviewScore;
 import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.reviewScore.HotelProviderReviewScoreFilter;
 import org.springframework.http.HttpEntity;
@@ -83,6 +85,41 @@ public class HotelProviderService {
         );
         HotelProviderSearch hotelProviderSearch = response.getBody();
         return hotelProviderSearch;
+    }
+
+    public HotelProviderReviewList findReviewList(HotelProviderReviewListFilter filter) {
+        String apiUrl = "https://hotels-com-provider.p.rapidapi.com/v2/hotels/reviews/list?";
+
+        if(filter.getDomain() != null){
+            apiUrl = apiUrl+"domain="+filter.getDomain();
+        }
+
+        if(filter.getLocale() != null){
+            apiUrl = apiUrl+"&locale=="+filter.getLocale();
+        }
+
+        if(filter.getHotelId() > 0){
+            apiUrl = apiUrl+"&hotel_id="+filter.getHotelId();
+        }
+
+        apiUrl = apiUrl + "&page_number=1";
+
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+
+        headers.set("X-RapidAPI-Key", apiKey);
+        headers.set("X-RapidAPI-Host", "hotels-com-provider.p.rapidapi.com");
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+
+        ResponseEntity<HotelProviderReviewList> response;
+        response = restTemplate.exchange(
+                apiUrl,
+                HttpMethod.GET,
+                entity,
+                HotelProviderReviewList.class
+        );
+        HotelProviderReviewList hotelProviderReviewList = response.getBody();
+        return hotelProviderReviewList;
     }
 
     public HotelProviderReviewScore findReviewScore(HotelProviderReviewScoreFilter filter) {
