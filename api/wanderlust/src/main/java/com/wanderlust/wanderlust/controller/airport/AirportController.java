@@ -86,13 +86,13 @@ public class AirportController {
         return airportTimeTableService.findAIataCodeByCountry();
     }
 
-    @GetMapping("/ryanair-airports")
+    @GetMapping("/ryanair/airports")
     @Operation(summary = "Consulta aeroportos da rayanair")
     public List<RyanairAirportInfo> findRyanairAirports() {
         return ryanairService.findAirports();
     }
 
-    @GetMapping("/ryanair-routes/{originIataCode}")
+    @GetMapping("/ryanair/routes/{originIataCode}")
     @Operation(summary = "Consulta rotas da rayanair")
     public List<RyanairAirportRoutes> findRyanairAirports(@PathVariable @NotNull @NotBlank String originIataCode) {
         return ryanairService.findRoutes(originIataCode);
