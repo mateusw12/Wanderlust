@@ -1,6 +1,7 @@
 package com.wanderlust.wanderlust.controller.hotel;
 
 import com.wanderlust.wanderlust.external.hotel.airBnb.AirBnbService;
+import com.wanderlust.wanderlust.external.hotel.airBnb.model.category.AirBnbCategory;
 import com.wanderlust.wanderlust.external.hotel.airBnb.model.destination.AirBnbLocation;
 import com.wanderlust.wanderlust.external.hotel.airBnb.model.property.AirBnbPropertyFilter;
 import com.wanderlust.wanderlust.external.hotel.airBnb.model.property.AirBnbPropertyLocation;
@@ -81,6 +82,12 @@ public class HotelQueryController {
     @Operation(summary = "Consulta hotel e lugar por filtro")
     public AirBnbPropertyLocationPlace findSearchPropertyPlace(@RequestBody @NotNull AirBnbPropertyFilter filter) {
         return airBnbService.findSearchPropertyPlace(filter);
+    }
+
+    @GetMapping("/airbnb/categories")
+    @Operation(summary = "Consulta categorias de hoteis do air bnb")
+    public AirBnbCategory findCategory() {
+        return airBnbService.findCategory();
     }
 
 }

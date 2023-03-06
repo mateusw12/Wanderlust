@@ -1,5 +1,6 @@
 package com.wanderlust.wanderlust.external.hotel.airBnb;
 
+import com.wanderlust.wanderlust.external.hotel.airBnb.model.category.AirBnbCategory;
 import com.wanderlust.wanderlust.external.hotel.airBnb.model.destination.AirBnbLocation;
 import com.wanderlust.wanderlust.external.hotel.airBnb.model.property.AirBnbPropertyFilter;
 import com.wanderlust.wanderlust.external.hotel.airBnb.model.property.AirBnbPropertyLocation;
@@ -190,6 +191,27 @@ public class AirBnbService {
         );
         AirBnbPropertyLocationPlace airBnbPropertyLocation = response.getBody();
         return airBnbPropertyLocation;
+    }
+
+    public AirBnbCategory findCategory() {
+        String apiUrl = "https://airbnb19.p.rapidapi.com/api/v1/getCategory";
+
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+
+        headers.set("X-RapidAPI-Key", apiKey);
+        headers.set("X-RapidAPI-Host", "airbnb19.p.rapidapi.com");
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+
+        ResponseEntity<AirBnbCategory> response;
+        response = restTemplate.exchange(
+                apiUrl,
+                HttpMethod.GET,
+                entity,
+                AirBnbCategory.class
+        );
+        AirBnbCategory airBnbCategory = response.getBody();
+        return airBnbCategory;
     }
 
 }
