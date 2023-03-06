@@ -98,13 +98,13 @@ public class AirportController {
         return ryanairService.findRoutes(originIataCode);
     }
 
-    @PostMapping("/flight-status")
+    @PostMapping("/flight-info/status")
     @Operation(summary = "Consulta status dos voos com filtros")
     public FlighData findFlighsStatus(@RequestBody FlighStatusFilter filter) {
         return flightInfoService.findFlightsStatus(filter);
     }
 
-    @PostMapping("/fligh-schedules")
+    @PostMapping("/flight-info/schedules")
     @Operation(summary = "Consulta agendamento de voos com filtros")
     public FlighData findFlightsSchedules(@RequestBody FlighStatusFilter filter) {
         return flightInfoService.findFlightsSchedules(filter);
