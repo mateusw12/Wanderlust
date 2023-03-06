@@ -1,5 +1,7 @@
 package com.wanderlust.wanderlust.controller.hotel;
 
+import com.wanderlust.wanderlust.external.hotel.airBnb.AirBnbService;
+import com.wanderlust.wanderlust.external.hotel.airBnb.model.destination.AirBnbLocation;
 import com.wanderlust.wanderlust.external.hotel.booking.BookingHotelService;
 import com.wanderlust.wanderlust.external.hotel.booking.model.data.BookingHotel;
 import com.wanderlust.wanderlust.external.hotel.booking.model.description.BookingHotelDescription;
@@ -29,6 +31,9 @@ public class HotelQueryController {
     @Autowired
     private BookingHotelService bookingHotelService;
 
+    @Autowired
+    private AirBnbService airBnbService;
+
     @GetMapping("/location/{cityName}")
     @Operation(summary = "Consulta hotéis por cidade")
     public List<BookingHotelLocation> findHotelsByLocation(@PathVariable @NotNull @NotBlank String cityName) {
@@ -57,6 +62,13 @@ public class HotelQueryController {
     @Operation(summary = "Consulta descrição do hotel por código")
     public BookingHotelDescription findDescriptionByHotelId(@PathVariable @NotNull @Positive Long hotelId) {
         return bookingHotelService.findDescriptionByHotelId(hotelId);
+    }
+
+    @GetMapping("/airbnb/destination/{cityName}/{country}")
+    @Operation(summary = "Consulta destinos por cidade e país")
+    public AirBnbLocation findSearchDestination(@PathVariable @NotNull @NotBlank String cityName,
+                                                @PathVariable String country) {
+        return airBnbService.findSearchDestination(cityName, country);
     }
 
 }
