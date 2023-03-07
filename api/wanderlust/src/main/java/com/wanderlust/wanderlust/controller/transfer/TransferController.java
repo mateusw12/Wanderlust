@@ -1,5 +1,8 @@
 package com.wanderlust.wanderlust.controller.transfer;
 
+import com.wanderlust.wanderlust.external.tranfer.taxiFare.TaxiFareService;
+import com.wanderlust.wanderlust.external.tranfer.taxiFare.model.TaxiFare;
+import com.wanderlust.wanderlust.external.tranfer.taxiFare.model.filter.TaxiFareFilter;
 import com.wanderlust.wanderlust.external.tranfer.waze.WazeService;
 import com.wanderlust.wanderlust.external.tranfer.waze.model.alertAndJams.WazeAlertAndJams;
 import com.wanderlust.wanderlust.external.tranfer.waze.model.alertAndJams.WazeAlertAndJamsFilter;
@@ -22,6 +25,9 @@ public class TransferController {
     @Autowired
     private WazeService wazeService;
 
+    @Autowired
+    private TaxiFareService taxiFareService;
+
     @PostMapping("/waze/alert-jams")
     @Operation(summary = "Consulta transfer pelo waze")
     public WazeAlertAndJams findAlertAndJams(@RequestBody @NotNull WazeAlertAndJamsFilter filter) {
@@ -32,6 +38,12 @@ public class TransferController {
     @Operation(summary = "Consulta condução pelo waze")
     public WazeDrivingDirection findDrivingDirections(@RequestBody @NotNull WazeDrivingDirectionFilter filter) {
         return wazeService.findDrivingDirections(filter);
+    }
+
+    @PostMapping("/taxi-fare")
+    @Operation(summary = "Consulta tarifa de taxi")
+    public TaxiFare findTaxiFare(@RequestBody @NotNull TaxiFareFilter filter) {
+        return taxiFareService.findTaxiFare(filter);
     }
 
 }
