@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 @Validated
@@ -30,19 +31,19 @@ public class TransferQueryController {
 
     @PostMapping("/waze/alert-jams")
     @Operation(summary = "Consulta transfer pelo waze")
-    public WazeAlertAndJams findAlertAndJams(@RequestBody @NotNull WazeAlertAndJamsFilter filter) {
+    public WazeAlertAndJams findAlertAndJams(@RequestBody @Valid WazeAlertAndJamsFilter filter) {
         return wazeService.findAlertAndJams(filter);
     }
 
     @PostMapping("/waze/driving-direction")
     @Operation(summary = "Consulta condução pelo waze")
-    public WazeDrivingDirection findDrivingDirections(@RequestBody @NotNull WazeDrivingDirectionFilter filter) {
+    public WazeDrivingDirection findDrivingDirections(@RequestBody @Valid WazeDrivingDirectionFilter filter) {
         return wazeService.findDrivingDirections(filter);
     }
 
     @PostMapping("/taxi-fare")
     @Operation(summary = "Consulta tarifa de taxi")
-    public TaxiFare findTaxiFare(@RequestBody @NotNull TaxiFareFilter filter) {
+    public TaxiFare findTaxiFare(@RequestBody @Valid TaxiFareFilter filter) {
         return taxiFareService.findTaxiFare(filter);
     }
 
