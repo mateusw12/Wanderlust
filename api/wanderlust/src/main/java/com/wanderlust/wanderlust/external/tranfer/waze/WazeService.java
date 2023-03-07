@@ -3,6 +3,8 @@ package com.wanderlust.wanderlust.external.tranfer.waze;
 import com.wanderlust.wanderlust.external.hotel.priceline.model.detail.PricelineHotelDetail;
 import com.wanderlust.wanderlust.external.tranfer.waze.model.alertAndJams.WazeAlertAndJams;
 import com.wanderlust.wanderlust.external.tranfer.waze.model.alertAndJams.WazeAlertAndJamsFilter;
+import com.wanderlust.wanderlust.external.tranfer.waze.model.drivingDirection.WazeDrivingDirection;
+import com.wanderlust.wanderlust.external.tranfer.waze.model.drivingDirection.WazeDrivingDirectionFilter;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -44,6 +46,35 @@ public class WazeService {
         );
         WazeAlertAndJams wazeAlertAndJams = response.getBody();
         return wazeAlertAndJams;
+    }
+
+    public WazeDrivingDirection findDrivingDirections(WazeDrivingDirectionFilter filter) {
+        String apiUrl = "https://waze.p.rapidapi.com/driving-directions?";
+
+        if(filter.getSource_coordinates() != null){
+            apiUrl = apiUrl + "source_coordinates="+filter.getSource_coordinates();
+        }
+
+        if(filter.getDestination_coordinates() != null){
+            apiUrl = apiUrl + "&destination_coordinates="+filter.getDestination_coordinates();
+        }
+
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+
+        headers.set("X-RapidAPI-Key", apiKey);
+        headers.set("X-RapidAPI-Host", "waze.p.rapidapi.com");
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+
+        ResponseEntity<WazeDrivingDirection> response;
+        response = restTemplate.exchange(
+                apiUrl,
+                HttpMethod.GET,
+                entity,
+                WazeDrivingDirection.class
+        );
+        WazeDrivingDirection wazeDrivingDirection = response.getBody();
+        return wazeDrivingDirection;
     }
 
 }
