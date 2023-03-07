@@ -33,9 +33,9 @@ import java.util.List;
 
 @Validated
 @RestController
-@RequestMapping("api/aeroporto")
+@RequestMapping("api/consulta-aeroporto")
 @Tag(name = "Consulta de aeroportos")
-public class AirportController {
+public class AirportQueryController {
 
     @Autowired
     private AeroDataBoxService aeroDataBoxService;
