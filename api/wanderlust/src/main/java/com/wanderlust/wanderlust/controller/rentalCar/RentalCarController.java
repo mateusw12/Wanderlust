@@ -5,6 +5,8 @@ import com.wanderlust.wanderlust.external.carRental.booking.model.BookingRentalC
 import com.wanderlust.wanderlust.external.carRental.carData.CarDataService;
 import com.wanderlust.wanderlust.external.carRental.carData.model.CarData;
 import com.wanderlust.wanderlust.external.carRental.carData.model.CarDataFilter;
+import com.wanderlust.wanderlust.external.carRental.skyscanner.SkyscannerService;
+import com.wanderlust.wanderlust.external.carRental.skyscanner.model.SkyscannerSearchLocation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,9 @@ public class RentalCarController {
     @Autowired
     private CarDataService carDataService;
 
+    @Autowired
+    private SkyscannerService skyscannerService;
+
     @GetMapping("/booking/rental-car/{cityName}")
     @Operation(summary = "Consulta carros para aluguel por cidade")
     public List<BookingRentalCar> findRentalCarByCityName(@PathVariable @NotNull @NotBlank String cityName) {
@@ -37,6 +42,12 @@ public class RentalCarController {
     @Operation(summary = "Consulta carros com filtros")
     public List<CarData> findCarsByFilter(@RequestBody @NotNull @NotBlank CarDataFilter filter) {
         return carDataService.findCarsByFilter(filter);
+    }
+
+    @GetMapping("/skyscanner/search-location/{cityName}")
+    @Operation(summary = "Consulta locadoras para aluguel de carros por cidade")
+    public SkyscannerSearchLocation findSearchLocationCar(@PathVariable @NotNull @NotBlank String cityName) {
+        return skyscannerService.findSearchLocationCar(cityName);
     }
 
 }
