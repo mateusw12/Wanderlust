@@ -24,7 +24,9 @@ public class BookingAirportMapper {
                 bookingAirportModel.getAdultsNumber(),
                 bookingAirportModel.getChildrenNumber(),
                 PaymentCondition.getEnumValue(bookingAirportModel.getPaymentCondition()),
-                bookingAirportModel.getIsPayment()
+                bookingAirportModel.getIsPayment(),
+                bookingAirportModel.getUser(),
+                bookingAirportModel.getBookingDate()
         );
     }
 
@@ -48,6 +50,8 @@ public class BookingAirportMapper {
         bookingAirportModel.setOriginDate(bookingAirportDTO.originDate());
         bookingAirportModel.setPaymentCondition(bookingAirportDTO.paymentCondition().getDescription());
         bookingAirportModel.setPrice(bookingAirportDTO.price());
+        bookingAirportModel.setUser(bookingAirportDTO.user());
+        bookingAirportModel.setBookingDate(bookingAirportDTO.bookingDate());
         return bookingAirportModel;
     }
 

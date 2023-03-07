@@ -20,6 +20,8 @@ public record BookingAirportDTO(
         @NotNull Double adultsNumber,
         @NotNull Double childrenNumber,
         @NotNull PaymentCondition paymentCondition,
-        @NotNull Boolean isPayment
+        @NotNull Boolean isPayment,
+        @NotNull @NotBlank String user,
+        @NotNull Date bookingDate
 ) {
 }
