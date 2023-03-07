@@ -27,6 +27,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -111,13 +112,13 @@ public class AirportQueryController {
 
     @PostMapping("/flight-info/status")
     @Operation(summary = "Consulta status dos voos com filtros")
-    public FlighData findFlighsStatus(@RequestBody FlighStatusFilter filter) {
+    public FlighData findFlighsStatus(@RequestBody @Valid FlighStatusFilter filter) {
         return flightInfoService.findFlightsStatus(filter);
     }
 
     @PostMapping("/flight-info/schedules")
     @Operation(summary = "Consulta agendamento de voos com filtros")
-    public FlighData findFlightsSchedules(@RequestBody FlighStatusFilter filter) {
+    public FlighData findFlightsSchedules(@RequestBody @Valid FlighStatusFilter filter) {
         return flightInfoService.findFlightsSchedules(filter);
     }
 
@@ -129,7 +130,7 @@ public class AirportQueryController {
 
     @PostMapping("/brazilian-airline/search-airline")
     @Operation(summary = "Consulta voos por companhia aerea do brasil")
-    public List<BrazilianArilineData> findSearchAirport(@RequestBody @NotNull BrazilianAirlineDataFilter filter) {
+    public List<BrazilianArilineData> findSearchAirport(@RequestBody @Valid BrazilianAirlineDataFilter filter) {
         return brazilianArlineDataService.findAirlineData(filter);
     }
 
