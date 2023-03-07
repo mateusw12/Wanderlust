@@ -33,6 +33,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
@@ -89,19 +90,19 @@ public class HotelQueryController {
     @GetMapping("/airbnb/destination/{cityName}/{country}")
     @Operation(summary = "Consulta destinos por cidade e país")
     public AirBnbLocation findSearchDestination(@PathVariable @NotNull @NotBlank String cityName,
-                                                @PathVariable String country) {
+                                                @PathVariable @NotNull @NotBlank String country) {
         return airBnbService.findSearchDestination(cityName, country);
     }
 
     @PostMapping("/airbnb/property")
     @Operation(summary = "Consulta hotel por filtro")
-    public AirBnbPropertyLocation findSearchProperty(@RequestBody @NotNull AirBnbPropertyFilter filter) {
+    public AirBnbPropertyLocation findSearchProperty(@RequestBody @Valid AirBnbPropertyFilter filter) {
         return airBnbService.findSearchProperty(filter);
     }
 
     @PostMapping("/airbnb/property-place")
     @Operation(summary = "Consulta hotel e lugar por filtro")
-    public AirBnbPropertyLocationPlace findSearchPropertyPlace(@RequestBody @NotNull AirBnbPropertyFilter filter) {
+    public AirBnbPropertyLocationPlace findSearchPropertyPlace(@RequestBody @Valid AirBnbPropertyFilter filter) {
         return airBnbService.findSearchPropertyPlace(filter);
     }
 
@@ -132,25 +133,25 @@ public class HotelQueryController {
 
     @PostMapping("/hotel-provider/hotel-search")
     @Operation(summary = "Consulta hoteis com filtro")
-    public HotelProviderSearch findHotelSearch(@RequestBody @NotNull HotelProviderSearchFilter filter) {
+    public HotelProviderSearch findHotelSearch(@RequestBody @Valid HotelProviderSearchFilter filter) {
         return hotelProviderService.findHotelSearch(filter);
     }
 
     @PostMapping("/hotel-provider/score")
     @Operation(summary = "Consulta score do hotel com filtro")
-    public HotelProviderReviewScore findReviewScore(@RequestBody @NotNull HotelProviderReviewScoreFilter filter) {
+    public HotelProviderReviewScore findReviewScore(@RequestBody @Valid HotelProviderReviewScoreFilter filter) {
         return hotelProviderService.findReviewScore(filter);
     }
 
     @PostMapping("/hotel-provider/review-list")
     @Operation(summary = "Consulta lista de revisões do hotel com filtro")
-    public HotelProviderReviewList findReviewList(@RequestBody @NotNull HotelProviderReviewListFilter filter) {
+    public HotelProviderReviewList findReviewList(@RequestBody @Valid HotelProviderReviewListFilter filter) {
         return hotelProviderService.findReviewList(filter);
     }
 
     @PostMapping("/hotel-provider/summary")
     @Operation(summary = "Consulta lista de sumário do hotel com filtro")
-    public HotelProviderSummary findHotelSummary(@RequestBody @NotNull HotelProviderSummaryFilter filter) {
+    public HotelProviderSummary findHotelSummary(@RequestBody @Valid HotelProviderSummaryFilter filter) {
         return hotelProviderService.findHotelSummary(filter);
     }
 
