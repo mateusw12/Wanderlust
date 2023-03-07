@@ -18,9 +18,9 @@ import javax.validation.constraints.NotNull;
 
 @Validated
 @RestController
-@RequestMapping("api/transfer")
+@RequestMapping("api/consulta-transfer")
 @Tag(name = "Consulta de tranfers")
-public class TransferController {
+public class TransferQueryController {
 
     @Autowired
     private WazeService wazeService;

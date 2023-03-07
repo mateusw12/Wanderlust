@@ -21,9 +21,9 @@ import java.util.List;
 
 @Validated
 @RestController
-@RequestMapping("api/aluguel-carro")
+@RequestMapping("api/consulta-aluguel-carro")
 @Tag(name = "Consulta de alguel de carro")
-public class RentalCarController {
+public class RentalCarQueryController {
 
     @Autowired
     private BookingRentalCarService bookingRentalCarService;
