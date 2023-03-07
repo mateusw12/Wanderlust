@@ -24,6 +24,8 @@ import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.reviewScore.
 import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.reviewScore.HotelProviderReviewScoreFilter;
 import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.summary.HotelProviderSummary;
 import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.summary.HotelProviderSummaryFilter;
+import com.wanderlust.wanderlust.external.hotel.priceline.PricelineService;
+import com.wanderlust.wanderlust.external.hotel.priceline.model.searchLocation.PricelineSearchHotelLocation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +51,9 @@ public class HotelQueryController {
 
     @Autowired
     private HotelProviderService hotelProviderService;
+
+    @Autowired
+    private PricelineService pricelineService;
 
     @GetMapping("/booking/location/{cityName}")
     @Operation(summary = "Consulta hotéis por cidade")
@@ -146,6 +151,13 @@ public class HotelQueryController {
     @Operation(summary = "Consulta lista de sumário do hotel com filtro")
     public HotelProviderSummary findHotelSummary(@RequestBody @NotNull HotelProviderSummaryFilter filter) {
         return hotelProviderService.findHotelSummary(filter);
+    }
+
+    @GetMapping("/priceline/search-hotels-location/{cityName}/{searchType}")
+    @Operation(summary = "Consulta hoteis por localização")
+    public List<PricelineSearchHotelLocation> findHotelSummary(@PathVariable @NotNull @NotBlank String cityName,
+                                                               @PathVariable @NotNull String searchType) {
+        return pricelineService.findSearcHotelsLocations(cityName, searchType);
     }
 
 }

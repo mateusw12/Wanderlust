@@ -60,5 +60,5 @@ public class RentalCarController {
     public List<PricelineSearchCars> findSearchLocationCars(@PathVariable @NotNull @NotBlank String cityName) {
         return pricelineService.findSearchLocationCars(cityName);
     }
-    
+
 }
