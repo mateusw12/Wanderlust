@@ -1,5 +1,6 @@
 package com.wanderlust.wanderlust.external.hotel.priceline;
 
+import com.wanderlust.wanderlust.external.hotel.priceline.model.detail.PricelineHotelDetail;
 import com.wanderlust.wanderlust.external.hotel.priceline.model.searchLocation.PricelineSearchHotelLocation;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
@@ -36,6 +37,27 @@ public class PricelineService {
         );
         List<PricelineSearchHotelLocation> pricelineSearchHotelLocations = response.getBody();
         return pricelineSearchHotelLocations;
+    }
+
+    public PricelineHotelDetail findHotelDetailByHotelId(Long hotelId) {
+        String apiUrl = "https://priceline-com-provider.p.rapidapi.com/v1/hotels/details?hotel_id="+hotelId;
+
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+
+        headers.set("X-RapidAPI-Key", apiKey);
+        headers.set("X-RapidAPI-Host", "priceline-com-provider.p.rapidapi.com");
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+
+        ResponseEntity<PricelineHotelDetail> response;
+        response = restTemplate.exchange(
+                apiUrl,
+                HttpMethod.GET,
+                entity,
+                PricelineHotelDetail.class
+        );
+        PricelineHotelDetail pricelineHotelDetail = response.getBody();
+        return pricelineHotelDetail;
     }
 
 }

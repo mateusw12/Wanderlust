@@ -25,6 +25,7 @@ import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.reviewScore.
 import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.summary.HotelProviderSummary;
 import com.wanderlust.wanderlust.external.hotel.hotelProvider.model.summary.HotelProviderSummaryFilter;
 import com.wanderlust.wanderlust.external.hotel.priceline.PricelineService;
+import com.wanderlust.wanderlust.external.hotel.priceline.model.detail.PricelineHotelDetail;
 import com.wanderlust.wanderlust.external.hotel.priceline.model.searchLocation.PricelineSearchHotelLocation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -158,6 +159,12 @@ public class HotelQueryController {
     public List<PricelineSearchHotelLocation> findHotelSummary(@PathVariable @NotNull @NotBlank String cityName,
                                                                @PathVariable @NotNull String searchType) {
         return pricelineService.findSearcHotelsLocations(cityName, searchType);
+    }
+
+    @GetMapping("/priceline/hotel-detail/{hotelId}")
+    @Operation(summary = "Consulta hoteis por localização")
+    public PricelineHotelDetail findHotelDetailByHotelId(@PathVariable @NotNull @Positive Long hotelId) {
+        return pricelineService.findHotelDetailByHotelId(hotelId);
     }
 
 }
