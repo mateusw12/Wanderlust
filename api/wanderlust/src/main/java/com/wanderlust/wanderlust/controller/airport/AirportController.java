@@ -16,6 +16,8 @@ import com.wanderlust.wanderlust.external.airportAndFlight.flightInfo.filter.Fli
 import com.wanderlust.wanderlust.external.airportAndFlight.ryanair.RyanairService;
 import com.wanderlust.wanderlust.external.airportAndFlight.ryanair.model.RyanairAirportInfo;
 import com.wanderlust.wanderlust.external.airportAndFlight.ryanair.model.RyanairAirportRoutes;
+import com.wanderlust.wanderlust.external.airportAndFlight.skyscanner.SkyscannerService;
+import com.wanderlust.wanderlust.external.airportAndFlight.skyscanner.model.SkyscannerSearchAirport;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +45,9 @@ public class AirportController {
 
     @Autowired
     private RyanairService ryanairService;
+
+    @Autowired
+    private SkyscannerService skyscannerService;
 
     @GetMapping("/aero-data/info/{airportDataCode}")
     @Operation(summary = "Consulta informação do aeroporto pela IATA")
@@ -108,6 +113,12 @@ public class AirportController {
     @Operation(summary = "Consulta agendamento de voos com filtros")
     public FlighData findFlightsSchedules(@RequestBody FlighStatusFilter filter) {
         return flightInfoService.findFlightsSchedules(filter);
+    }
+
+    @GetMapping("/skyscanner/search-airport/{cityName}")
+    @Operation(summary = "Consulta aeroportos por cidade")
+    public SkyscannerSearchAirport findSearchAirport(@PathVariable @NotNull @NotBlank String cityName) {
+        return skyscannerService.findSearchAirport(cityName);
     }
 
 }
