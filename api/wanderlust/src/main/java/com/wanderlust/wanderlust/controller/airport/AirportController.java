@@ -2,6 +2,9 @@ package com.wanderlust.wanderlust.controller.airport;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.wanderlust.wanderlust.external.airportAndFlight.aeroDataBox.AeroDataBoxService;
+import com.wanderlust.wanderlust.external.airportAndFlight.brazilianAirlineData.BrazilianArlineDataService;
+import com.wanderlust.wanderlust.external.airportAndFlight.brazilianAirlineData.model.BrazilianAirlineDataFilter;
+import com.wanderlust.wanderlust.external.airportAndFlight.brazilianAirlineData.model.BrazilianArilineData;
 import com.wanderlust.wanderlust.external.airportAndFlight.model.aiportInfo.Airport;
 import com.wanderlust.wanderlust.external.airportAndFlight.model.aiportRoutesDailyFlight.AiportRoutesDailyFlight;
 import com.wanderlust.wanderlust.external.airportAndFlight.model.airportSearchResult.AirportSearchResult;
@@ -48,6 +51,9 @@ public class AirportController {
 
     @Autowired
     private SkyscannerService skyscannerService;
+
+    @Autowired
+    private BrazilianArlineDataService brazilianArlineDataService;
 
     @GetMapping("/aero-data/info/{airportDataCode}")
     @Operation(summary = "Consulta informação do aeroporto pela IATA")
@@ -119,6 +125,12 @@ public class AirportController {
     @Operation(summary = "Consulta aeroportos por cidade")
     public SkyscannerSearchAirport findSearchAirport(@PathVariable @NotNull @NotBlank String cityName) {
         return skyscannerService.findSearchAirport(cityName);
+    }
+
+    @PostMapping("/brazilian-airline/search-airline")
+    @Operation(summary = "Consulta voos por companhia aerea do brasil")
+    public List<BrazilianArilineData> findSearchAirport(@RequestBody @NotNull BrazilianAirlineDataFilter filter) {
+        return brazilianArlineDataService.findAirlineData(filter);
     }
 
 }
