@@ -49,9 +49,9 @@ public class UserModel implements Serializable {
     public Boolean isActive;
 
     @NotNull
-    @Positive
+    @NotBlank
     @Column(name="perfil", nullable = false, length = 100)
-    public Long role;
+    public String role;
 
     @Length(max = 15)
     @NotBlank

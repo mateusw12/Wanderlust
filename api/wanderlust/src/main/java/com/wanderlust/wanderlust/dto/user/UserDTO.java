@@ -1,6 +1,7 @@
 package com.wanderlust.wanderlust.dto.user;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.wanderlust.wanderlust.model.role.Role;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.Id;
@@ -17,6 +18,6 @@ public record UserDTO(
         @NotBlank @NotNull @Length(max = 15) String cep,
         @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
         @NotBlank @NotNull @Length(max = 200) String password,
-        @NotNull @Positive Long role,
+        @NotNull Role role,
         Boolean isActive)
 { }

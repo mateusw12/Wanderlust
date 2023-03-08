@@ -29,7 +29,7 @@ public class DatabaseInitializer {
             user.setName("Mateus");
             user.setEmail("mateus.walz@gmail.com");
             user.setCep("6666666");
-            user.setRole(1L);
+            user.setRole("Admnistrador");
             user.setIsActive(true);
             userRepository.save(user);
         }
