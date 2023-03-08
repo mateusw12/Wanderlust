@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import springfox.documentation.annotations.Cacheable;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
@@ -19,7 +20,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    Autowired
+    @Autowired
     private UserMapper userMapper;
 
     @Autowired
@@ -39,6 +40,7 @@ public class UserService {
                 .orElseThrow(() -> new EntityNotFoundException("User not found" + id));
     }
 
+    @Cacheable(value = "findMe")
     @Transactional
     public UserDTO findMe(String userName) {
         return userMapper.toDTO(userRepository.findByUserName(userName));
