@@ -4,6 +4,7 @@ import com.wanderlust.wanderlust.dto.user.UserDTO;
 import com.wanderlust.wanderlust.mapper.user.UserMapper;
 import com.wanderlust.wanderlust.model.user.UserModel;
 import com.wanderlust.wanderlust.repository.user.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,15 +16,14 @@ import java.util.stream.Collectors;
 @Component
 public class UserService {
 
-    private final UserRepository userRepository;
-    private final UserMapper userMapper;
-    private final PasswordEncoder encoder;
+    @Autowired
+    private UserRepository userRepository;
 
-    public UserService(UserRepository userRepository, UserMapper userMapper, PasswordEncoder encoder) {
-        this.userRepository = userRepository;
-        this.userMapper = userMapper;
-        this.encoder = encoder;
-    }
+    Autowired
+    private UserMapper userMapper;
+
+    @Autowired
+    private PasswordEncoder encoder;
 
     @Transactional
     public List<UserDTO> findAll() {
@@ -37,6 +37,11 @@ public class UserService {
     public UserDTO findById(Long id) {
         return userRepository.findById(id).map(userMapper::toDTO)
                 .orElseThrow(() -> new EntityNotFoundException("User not found" + id));
+    }
+
+    @Transactional
+    public UserDTO findMe(String userName) {
+        return userMapper.toDTO(userRepository.findByUserName(userName));
     }
 
     @Transactional
