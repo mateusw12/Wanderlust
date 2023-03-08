@@ -6,7 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BookingAirportRepository extends JpaRepository<BookingAirportModel, Long> {
-
-    BookingAirportModel findByUserAndId(Long id, String user);
-
 }
