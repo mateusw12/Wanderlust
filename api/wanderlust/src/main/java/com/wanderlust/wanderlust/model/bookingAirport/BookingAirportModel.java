@@ -84,4 +84,10 @@ public class BookingAirportModel implements Serializable {
     @Column(name="agencia")
     public String agency;
 
+    @NotNull
+    @NotBlank
+    @Length(max = 200)
+    @Column(name="codVoo")
+    public String flightId;
+
 }

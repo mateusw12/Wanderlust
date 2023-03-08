@@ -23,6 +23,7 @@ public record BookingAirportDTO(
         @NotNull Boolean isPayment,
         @NotNull @NotBlank String user,
         @NotNull Date bookingDate,
-        @NotNull @NotBlank @Length(max = 200) String agency
+        @NotNull @NotBlank @Length(max = 200) String agency,
+        @NotNull @NotBlank @Length(max = 200) String flightId
 ) {
 }

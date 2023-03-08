@@ -27,7 +27,8 @@ public class BookingAirportMapper {
                 bookingAirportModel.getIsPayment(),
                 bookingAirportModel.getUser(),
                 bookingAirportModel.getBookingDate(),
-                bookingAirportModel.getAgency()
+                bookingAirportModel.getAgency(),
+                bookingAirportModel.getFlightId()
         );
     }
 
@@ -54,6 +55,7 @@ public class BookingAirportMapper {
         bookingAirportModel.setUser(bookingAirportDTO.user());
         bookingAirportModel.setBookingDate(bookingAirportDTO.bookingDate());
         bookingAirportModel.setAgency(bookingAirportDTO.agency());
+        bookingAirportModel.setFlightId(bookingAirportDTO.flightId());
         return bookingAirportModel;
     }
 
