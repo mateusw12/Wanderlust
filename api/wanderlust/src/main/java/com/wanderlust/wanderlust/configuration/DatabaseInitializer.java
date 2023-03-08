@@ -2,6 +2,7 @@ package com.wanderlust.wanderlust.configuration;
 
 import com.wanderlust.wanderlust.model.user.UserModel;
 import com.wanderlust.wanderlust.repository.user.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -11,13 +12,11 @@ import javax.annotation.PostConstruct;
 @Configuration
 public class DatabaseInitializer {
 
-    private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
+    @Autowired
+    private UserRepository userRepository;
 
-    public DatabaseInitializer(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
-        this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
-    }
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @PostConstruct
     public void init() {
