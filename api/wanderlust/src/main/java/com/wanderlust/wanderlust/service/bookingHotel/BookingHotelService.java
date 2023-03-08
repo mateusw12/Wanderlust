@@ -36,31 +36,31 @@ public class BookingHotelService {
     }
 
     @Transactional
-    public BookingHotelDTO create(BookingHotelDTO bookingAirportDTO) {
-        BookingHotelModel bookingAirportModel = bookingHotelMapper.toEntity(bookingAirportDTO);
-        return bookingHotelMapper.toDTO(bookingHotelRepository.save(bookingAirportModel));
+    public BookingHotelDTO create(BookingHotelDTO bookingHotelDTO) {
+        BookingHotelModel bookingHotelModel = bookingHotelMapper.toEntity(bookingHotelDTO);
+        return bookingHotelMapper.toDTO(bookingHotelRepository.save(bookingHotelModel));
     }
 
     @Transactional
-    public BookingHotelDTO update(Long id, BookingHotelDTO bookingAirportDTO) {
+    public BookingHotelDTO update(Long id, BookingHotelDTO bookingHotelDTO) {
         BookingHotelModel bookingAirportModel = bookingHotelRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Booking airport not found" + id));
         if(bookingAirportModel.getIsPayment()){
-            return bookingAirportDTO;
+            return bookingHotelDTO;
         }
         return bookingHotelRepository.findById(id)
                 .map(recordFound -> {
-                    recordFound.setAdultsNumber(bookingAirportDTO.adultsNumber());
-                    recordFound.setHotelId(bookingAirportDTO.hotelId());
-                    recordFound.setBookingId(bookingAirportDTO.bookingId());
-                    recordFound.setChildrenNumber(bookingAirportDTO.childrenNumber());
-                    recordFound.setCity(bookingAirportDTO.city());
-                    recordFound.setId(bookingAirportDTO.id());
-                    recordFound.setIsPayment(bookingAirportDTO.isPayment());
-                    recordFound.setStartDate(bookingAirportDTO.startDate());
-                    recordFound.setEndDate(bookingAirportDTO.endDate());
-                    recordFound.setPaymentCondition(bookingAirportDTO.paymentCondition().getDescription());
-                    recordFound.setPrice(bookingAirportDTO.price());
+                    recordFound.setAdultsNumber(bookingHotelDTO.adultsNumber());
+                    recordFound.setHotelId(bookingHotelDTO.hotelId());
+                    recordFound.setBookingId(bookingHotelDTO.bookingId());
+                    recordFound.setChildrenNumber(bookingHotelDTO.childrenNumber());
+                    recordFound.setCity(bookingHotelDTO.city());
+                    recordFound.setId(bookingHotelDTO.id());
+                    recordFound.setIsPayment(bookingHotelDTO.isPayment());
+                    recordFound.setStartDate(bookingHotelDTO.startDate());
+                    recordFound.setEndDate(bookingHotelDTO.endDate());
+                    recordFound.setPaymentCondition(bookingHotelDTO.paymentCondition().getDescription());
+                    recordFound.setPrice(bookingHotelDTO.price());
                     return bookingHotelMapper.toDTO(bookingHotelRepository.save(recordFound));
                 }).orElseThrow(() -> new EntityNotFoundException("Booking airport not found" + id));
     }
