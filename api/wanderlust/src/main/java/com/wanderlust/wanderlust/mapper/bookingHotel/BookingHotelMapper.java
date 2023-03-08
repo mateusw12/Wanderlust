@@ -25,7 +25,8 @@ public class BookingHotelMapper {
                 PaymentCondition.getEnumValue(bookingHotelModel.getPaymentCondition()),
                 bookingHotelModel.getIsPayment(),
                 bookingHotelModel.getUser(),
-                bookingHotelModel.getBookingDate()
+                bookingHotelModel.getBookingDate(),
+                bookingHotelModel.getAgency()
         );
     }
 
@@ -50,6 +51,7 @@ public class BookingHotelMapper {
         bookingHotelModel.setPrice(bookingHotelDTO.price());
         bookingHotelModel.setUser(bookingHotelDTO.user());
         bookingHotelModel.setBookingDate(bookingHotelDTO.bookingDate());
+        bookingHotelModel.setAgency(bookingHotelDTO.agency());
         return bookingHotelModel;
     }
 

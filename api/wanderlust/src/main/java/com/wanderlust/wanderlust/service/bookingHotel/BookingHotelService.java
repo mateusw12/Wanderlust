@@ -61,6 +61,7 @@ public class BookingHotelService {
                     recordFound.setEndDate(bookingHotelDTO.endDate());
                     recordFound.setPaymentCondition(bookingHotelDTO.paymentCondition().getDescription());
                     recordFound.setPrice(bookingHotelDTO.price());
+                    recordFound.setAgency(bookingHotelDTO.agency());
                     return bookingHotelMapper.toDTO(bookingHotelRepository.save(recordFound));
                 }).orElseThrow(() -> new EntityNotFoundException("Booking airport not found" + id));
     }

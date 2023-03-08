@@ -21,6 +21,7 @@ public record BookingHotelDTO(
         @NotNull PaymentCondition paymentCondition,
         @NotNull Boolean isPayment,
         @NotNull @NotBlank String user,
-        @NotNull Date bookingDate
+        @NotNull Date bookingDate,
+        @NotNull @NotBlank @Length(max = 200) String agency
 ) {
 }
