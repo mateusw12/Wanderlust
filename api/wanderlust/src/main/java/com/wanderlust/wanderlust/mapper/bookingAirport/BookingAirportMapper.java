@@ -26,7 +26,8 @@ public class BookingAirportMapper {
                 PaymentCondition.getEnumValue(bookingAirportModel.getPaymentCondition()),
                 bookingAirportModel.getIsPayment(),
                 bookingAirportModel.getUser(),
-                bookingAirportModel.getBookingDate()
+                bookingAirportModel.getBookingDate(),
+                bookingAirportModel.getAgency()
         );
     }
 
@@ -52,6 +53,7 @@ public class BookingAirportMapper {
         bookingAirportModel.setPrice(bookingAirportDTO.price());
         bookingAirportModel.setUser(bookingAirportDTO.user());
         bookingAirportModel.setBookingDate(bookingAirportDTO.bookingDate());
+        bookingAirportModel.setAgency(bookingAirportDTO.agency());
         return bookingAirportModel;
     }
 
