@@ -2,13 +2,17 @@ package com.wanderlust.wanderlust.controller.user;
 
 import com.wanderlust.wanderlust.dto.user.UserDTO;
 import com.wanderlust.wanderlust.service.user.UserService;
+import com.wanderlust.wanderlust.validator.user.UserCustomValidation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import java.util.List;
@@ -19,11 +23,11 @@ import java.util.List;
 @Tag(name = "Cadastro de usuário")
 public class UserController {
 
-    private final UserService userService;
+    @Autowired
+    private UserService userService;
 
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
+    @Autowired
+    private UserCustomValidation userCustomValidation;
 
     @GetMapping
     @Operation(summary = "Consulta todos os usuários")
@@ -35,6 +39,16 @@ public class UserController {
     @Operation(summary = "Consulta usuário por código")
     public UserDTO findById(@PathVariable @NotNull @Positive Long id) {
         return userService.findById(id);
+    }
+
+
+    @GetMapping("/me/{user}")
+    @Operation(summary = "Consulta usuário logado")
+    public ResponseEntity<UserDTO> findMe(@PathVariable @NotBlank @NotNull String user) {
+        if(userCustomValidation.validadeLoggedUser(user)){
+            return ResponseEntity.ok(userService.findMe(user));
+        }
+        return ResponseEntity.badRequest().build();
     }
 
     @PostMapping
