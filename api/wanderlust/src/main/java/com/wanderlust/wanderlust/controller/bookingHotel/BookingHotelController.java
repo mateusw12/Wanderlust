@@ -1,4 +1,4 @@
-package com.wanderlust.wanderlust.controller.booking;
+package com.wanderlust.wanderlust.controller.bookingHotel;
 
 import com.wanderlust.wanderlust.dto.bookingHotel.BookingHotelDTO;
 import com.wanderlust.wanderlust.service.bookingHotel.BookingHotelService;
