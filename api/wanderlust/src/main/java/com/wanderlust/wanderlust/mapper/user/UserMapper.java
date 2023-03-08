@@ -1,6 +1,7 @@
 package com.wanderlust.wanderlust.mapper.user;
 
 import com.wanderlust.wanderlust.dto.user.UserDTO;
+import com.wanderlust.wanderlust.model.role.Role;
 import com.wanderlust.wanderlust.model.user.UserModel;
 import org.springframework.stereotype.Component;
 
@@ -18,7 +19,7 @@ public class UserMapper {
                 userModel.getEmail(),
                 userModel.getCep(),
                 userModel.getPassword(),
-                userModel.getRole(),
+                Role.getEnumValue(userModel.getRole()),
                 userModel.getIsActive());
     }
 
@@ -38,7 +39,7 @@ public class UserMapper {
         userModel.setPassword(userDTO.password());
         userModel.setIsActive(userDTO.isActive());
         userModel.setUserName(userDTO.userName());
-        userModel.setRole(userDTO.role());
+        userModel.setRole(userDTO.role().getDescription());
         return userModel;
     }
 
