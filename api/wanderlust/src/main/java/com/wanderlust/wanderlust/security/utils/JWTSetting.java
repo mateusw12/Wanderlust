@@ -1,4 +1,5 @@
 package com.wanderlust.wanderlust.security.utils;
+import com.wanderlust.wanderlust.service.impl.detailUserService.DetailUserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,7 +18,7 @@ public class JWTSetting extends WebSecurityConfigurerAdapter {
     @Autowired
     private DetailUserServiceImpl myUserDetailsService;
     @Autowired
-    private JwtRequestFilter jwtRequestFilter;
+    private JWTRequestFilter jwtRequestFilter;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
