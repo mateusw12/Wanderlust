@@ -10,7 +10,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 @Service
-public class PaymentAccountService {
+public class AsaasPaymentAccountService {
 
     private final String apiKey = "";
 
