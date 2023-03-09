@@ -1,7 +1,8 @@
 package com.wanderlust.wanderlust.external.payment.asas.bankChargers.model.creditCard;
 
-import com.wanderlust.wanderlust.customDecorator.date.futureYear.FutureYear;
+import com.wanderlust.wanderlust.validator.user.decorator.futureYear.FutureYear;
 import lombok.Data;
+import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
@@ -29,6 +30,7 @@ public class BankChargerCreditCardData {
 
     @NotNull
     @NotBlank
+    @Length(max = 3)
     private String ccv;
 
 }

@@ -1,4 +1,4 @@
-package com.wanderlust.wanderlust.customDecorator.date.futureDate;
+package com.wanderlust.wanderlust.validator.user.decorator.futureYear;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -9,10 +9,10 @@ import java.lang.annotation.Target;
 
 @Target({ ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = { FutureDateValidator.class })
-public @interface FutureDate {
+@Constraint(validatedBy = { FutureYearValidator.class })
+public @interface FutureYear {
 
-    String message() default "A data informada deve ser maior que a data atual";
+    String message() default "O ano informada deve ser maior que o ano atual";
 
     Class<?>[] groups() default {};
 
