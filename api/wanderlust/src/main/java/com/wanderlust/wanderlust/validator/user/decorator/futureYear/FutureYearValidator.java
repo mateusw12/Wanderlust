@@ -1,11 +1,10 @@
-package com.wanderlust.wanderlust.customDecorator.date.futureYear;
+package com.wanderlust.wanderlust.validator.user.decorator.futureYear;
 
 import org.springframework.stereotype.Component;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Component
 public class FutureYearValidator implements ConstraintValidator<FutureYear, String> {

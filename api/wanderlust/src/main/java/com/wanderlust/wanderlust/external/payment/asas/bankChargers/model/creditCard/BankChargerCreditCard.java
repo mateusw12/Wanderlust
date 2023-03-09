@@ -1,7 +1,8 @@
 package com.wanderlust.wanderlust.external.payment.asas.bankChargers.model.creditCard;
 
 import com.fasterxml.jackson.databind.DatabindException;
-import com.wanderlust.wanderlust.customDecorator.date.futureDate.FutureDate;
+import com.wanderlust.wanderlust.validator.user.decorator.creditCard.CreditCard;
+import com.wanderlust.wanderlust.validator.user.decorator.futureDate.FutureDate;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
@@ -36,6 +37,8 @@ public class BankChargerCreditCard {
     private String externalReference;
 
     @NotNull
+    @NotBlank
+    @CreditCard
     private BankChargerCreditCardData creditCard;
 
     private BankChargerCreditCardInfo creditCardHolderInfo;
