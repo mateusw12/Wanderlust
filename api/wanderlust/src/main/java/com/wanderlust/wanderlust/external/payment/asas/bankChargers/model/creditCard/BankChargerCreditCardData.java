@@ -17,6 +17,7 @@ public class BankChargerCreditCardData {
 
     @NotNull
     @NotBlank
+    @Length(max = 19)
     private String number;
 
     @NotNull

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.DatabindException;
 import com.wanderlust.wanderlust.validator.user.decorator.creditCard.CreditCard;
 import com.wanderlust.wanderlust.validator.user.decorator.futureDate.FutureDate;
 import lombok.Data;
+import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -38,6 +39,7 @@ public class BankChargerCreditCard {
 
     @NotNull
     @NotBlank
+    @Length(max = 19)
     @CreditCard
     private BankChargerCreditCardData creditCard;
 
