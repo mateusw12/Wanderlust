@@ -84,7 +84,7 @@ public class BankChargersService {
         }
     }
 
-    public ResponseEntity<ChargerInstallmentsResponse> createCreditCardCharger(ChargerInstallments chargerInstallments) throws JSONException {
+    public ResponseEntity<ChargerInstallmentsResponse> createChargerInstallments(ChargerInstallments chargerInstallments) throws JSONException {
         String apiUrl = "https://www.asaas.com/api/v3/payments";
         try {
 
