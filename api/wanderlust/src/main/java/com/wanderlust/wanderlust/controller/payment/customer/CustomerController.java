@@ -1,9 +1,9 @@
 package com.wanderlust.wanderlust.controller.payment.customer;
 
-import com.wanderlust.wanderlust.external.payment.asas.bankTransfer.customer.CustomerService;
-import com.wanderlust.wanderlust.external.payment.asas.bankTransfer.customer.model.CustomerCreate;
-import com.wanderlust.wanderlust.external.payment.asas.bankTransfer.customer.model.CustomerResponse;
-import com.wanderlust.wanderlust.external.payment.asas.bankTransfer.customer.model.CustomersResponse;
+import com.wanderlust.wanderlust.external.payment.asas.customer.CustomerService;
+import com.wanderlust.wanderlust.external.payment.asas.customer.model.CustomerCreate;
+import com.wanderlust.wanderlust.external.payment.asas.customer.model.CustomerResponse;
+import com.wanderlust.wanderlust.external.payment.asas.customer.model.CustomersResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;

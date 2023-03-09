@@ -1,4 +1,4 @@
-package com.wanderlust.wanderlust.customDecorator.date;
+package com.wanderlust.wanderlust.customDecorator.date.futureDate;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

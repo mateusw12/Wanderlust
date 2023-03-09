@@ -1,10 +1,10 @@
-package com.wanderlust.wanderlust.external.payment.asas.bankTransfer.customer;
+package com.wanderlust.wanderlust.external.payment.asas.customer;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.wanderlust.wanderlust.external.payment.asas.bankTransfer.customer.model.CustomerCreate;
-import com.wanderlust.wanderlust.external.payment.asas.bankTransfer.customer.model.CustomerResponse;
-import com.wanderlust.wanderlust.external.payment.asas.bankTransfer.customer.model.CustomersResponse;
+import com.wanderlust.wanderlust.external.payment.asas.customer.model.CustomerCreate;
+import com.wanderlust.wanderlust.external.payment.asas.customer.model.CustomerResponse;
+import com.wanderlust.wanderlust.external.payment.asas.customer.model.CustomersResponse;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
