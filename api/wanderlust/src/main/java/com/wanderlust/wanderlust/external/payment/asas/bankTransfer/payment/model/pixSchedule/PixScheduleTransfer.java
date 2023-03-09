@@ -1,6 +1,6 @@
-package com.wanderlust.wanderlust.external.payment.asas.bankTransfer.model.pixSchedule;
+package com.wanderlust.wanderlust.external.payment.asas.bankTransfer.payment.model.pixSchedule;
 
-import com.wanderlust.wanderlust.external.payment.asas.bankTransfer.model.ted.TedBankAccount;
+import com.wanderlust.wanderlust.external.payment.asas.bankTransfer.payment.model.ted.TedBankAccount;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;

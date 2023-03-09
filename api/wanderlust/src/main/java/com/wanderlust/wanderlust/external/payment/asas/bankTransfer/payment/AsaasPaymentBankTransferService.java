@@ -1,10 +1,10 @@
-package com.wanderlust.wanderlust.external.payment.asas.bankTransfer;
+package com.wanderlust.wanderlust.external.payment.asas.bankTransfer.payment;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.wanderlust.wanderlust.external.payment.asas.bankTransfer.model.asaasTransferAccount.AsaasTransferAccount;
-import com.wanderlust.wanderlust.external.payment.asas.bankTransfer.model.pixSchedule.PixScheduleTransfer;
-import com.wanderlust.wanderlust.external.payment.asas.bankTransfer.model.ted.TedBankTransfer;
+import com.wanderlust.wanderlust.external.payment.asas.bankTransfer.payment.model.asaasTransferAccount.AsaasTransferAccount;
+import com.wanderlust.wanderlust.external.payment.asas.bankTransfer.payment.model.pixSchedule.PixScheduleTransfer;
+import com.wanderlust.wanderlust.external.payment.asas.bankTransfer.payment.model.ted.TedBankTransfer;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;

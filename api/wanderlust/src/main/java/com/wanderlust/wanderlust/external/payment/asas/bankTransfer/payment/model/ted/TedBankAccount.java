@@ -1,4 +1,4 @@
-package com.wanderlust.wanderlust.external.payment.asas.bankTransfer.model.ted;
+package com.wanderlust.wanderlust.external.payment.asas.bankTransfer.payment.model.ted;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.br.CPF;

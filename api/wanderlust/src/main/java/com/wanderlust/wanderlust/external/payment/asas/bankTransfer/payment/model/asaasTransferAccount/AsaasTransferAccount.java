@@ -1,4 +1,4 @@
-package com.wanderlust.wanderlust.external.payment.asas.bankTransfer.model.asaasTransferAccount;
+package com.wanderlust.wanderlust.external.payment.asas.bankTransfer.payment.model.asaasTransferAccount;
 
 import lombok.Data;
 
