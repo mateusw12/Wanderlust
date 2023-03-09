@@ -1,6 +1,6 @@
 package com.wanderlust.wanderlust.controller.payment.pix;
 
-import com.wanderlust.wanderlust.external.payment.asas.pix.AsasPaymentPixService;
+import com.wanderlust.wanderlust.external.payment.asas.pix.AsaasPaymentPixService;
 import com.wanderlust.wanderlust.external.payment.asas.pix.pix.model.dataPix.Pix;
 import com.wanderlust.wanderlust.external.payment.asas.pix.pix.model.generatePix.GeneratePix;
 import com.wanderlust.wanderlust.external.payment.asas.pix.pix.model.qrCodeDecode.QRCodeDecode;
@@ -22,7 +22,7 @@ import javax.validation.constraints.NotNull;
 public class PaymentPixController {
 
     @Autowired
-    AsasPaymentPixService asasPaymentPixService;
+    AsaasPaymentPixService asasPaymentPixService;
 
     @GetMapping("/generate-pix")
     @Operation(summary = "Gera chave")
