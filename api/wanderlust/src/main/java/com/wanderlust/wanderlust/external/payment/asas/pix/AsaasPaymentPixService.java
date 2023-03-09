@@ -11,7 +11,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 @Service
-public class AsasPaymentPixService {
+public class AsaasPaymentPixService {
 
     private final String apiKey = "";
 

@@ -1,6 +1,6 @@
 package com.wanderlust.wanderlust.controller.payment.account;
 
-import com.wanderlust.wanderlust.external.payment.asas.account.PaymentAccountService;
+import com.wanderlust.wanderlust.external.payment.asas.account.AsaasPaymentAccountService;
 import com.wanderlust.wanderlust.external.payment.asas.account.model.PaymentAccount;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -21,7 +21,7 @@ import javax.validation.constraints.NotNull;
 public class PaymentAccountController {
 
     @Autowired
-    private PaymentAccountService paymentAccountService;
+    private AsaasPaymentAccountService paymentAccountService;
 
     @PostMapping("/create")
     @Operation(summary = "Cria pagamento em conta")
