@@ -1,4 +1,4 @@
-package com.wanderlust.wanderlust.external.payment.asas.model.pix.qrCodeDecode;
+package com.wanderlust.wanderlust.external.payment.asas.pix.pix.model.qrCodeDecode;
 
 import lombok.Data;
 

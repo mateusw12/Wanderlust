@@ -1,8 +1,8 @@
-package com.wanderlust.wanderlust.external.payment.asas;
+package com.wanderlust.wanderlust.external.payment.asas.pix;
 
-import com.wanderlust.wanderlust.external.payment.asas.model.pix.dataPix.Pix;
-import com.wanderlust.wanderlust.external.payment.asas.model.pix.generatePix.GeneratePix;
-import com.wanderlust.wanderlust.external.payment.asas.model.pix.qrCodeDecode.QRCodeDecode;
+import com.wanderlust.wanderlust.external.payment.asas.pix.pix.model.dataPix.Pix;
+import com.wanderlust.wanderlust.external.payment.asas.pix.pix.model.generatePix.GeneratePix;
+import com.wanderlust.wanderlust.external.payment.asas.pix.pix.model.qrCodeDecode.QRCodeDecode;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.http.*;
@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class AsasPaymentPixService {
 
-    private final String apiKey = "API_KEY";
+    private final String apiKey = "";
 
     public GeneratePix GeneratePixKey() throws JSONException {
         String apiUrl = "https://www.asaas.com/api/v3/pix/addressKeys";

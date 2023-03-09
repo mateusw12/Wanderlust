@@ -1,12 +1,11 @@
-package com.wanderlust.wanderlust.external.payment.asas.model.pix.dataPix;
+package com.wanderlust.wanderlust.external.payment.asas.pix.pix.model.generatePix;
 
-import com.wanderlust.wanderlust.external.payment.asas.model.pix.generatePix.GeneratePixQrCode;
 import lombok.Data;
 
 import java.util.Date;
 
 @Data
-public class DataPix {
+public class GeneratePix {
 
     private String id;
     private String key;
@@ -14,7 +13,7 @@ public class DataPix {
     private String status;
     private Date dateCreated;
     private Boolean canBeDeleted;
-    private Boolean cannotBeDeletedReason;
+    private String cannotBeDeletedReason;
     private GeneratePixQrCode qrCode;
 
 }

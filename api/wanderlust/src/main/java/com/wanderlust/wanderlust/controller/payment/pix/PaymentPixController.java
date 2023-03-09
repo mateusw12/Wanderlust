@@ -1,9 +1,9 @@
-package com.wanderlust.wanderlust.controller.payment;
+package com.wanderlust.wanderlust.controller.payment.pix;
 
-import com.wanderlust.wanderlust.external.payment.asas.AsasPaymentPixService;
-import com.wanderlust.wanderlust.external.payment.asas.model.pix.dataPix.Pix;
-import com.wanderlust.wanderlust.external.payment.asas.model.pix.generatePix.GeneratePix;
-import com.wanderlust.wanderlust.external.payment.asas.model.pix.qrCodeDecode.QRCodeDecode;
+import com.wanderlust.wanderlust.external.payment.asas.pix.AsasPaymentPixService;
+import com.wanderlust.wanderlust.external.payment.asas.pix.pix.model.dataPix.Pix;
+import com.wanderlust.wanderlust.external.payment.asas.pix.pix.model.generatePix.GeneratePix;
+import com.wanderlust.wanderlust.external.payment.asas.pix.pix.model.qrCodeDecode.QRCodeDecode;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;

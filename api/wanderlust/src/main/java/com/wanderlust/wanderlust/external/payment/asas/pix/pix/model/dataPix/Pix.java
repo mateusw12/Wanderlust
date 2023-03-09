@@ -1,4 +1,4 @@
-package com.wanderlust.wanderlust.external.payment.asas.model.pix.dataPix;
+package com.wanderlust.wanderlust.external.payment.asas.pix.pix.model.dataPix;
 
 import lombok.Data;
 
