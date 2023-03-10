@@ -1,4 +1,4 @@
-package com.wanderlust.wanderlust.external.airportAndFlight.model.aiportRoutesDailyFlight;
+package com.wanderlust.wanderlust.external.airportAndFlight.aeroDataBox.model.aiportRoutesDailyFlight;
 
 import lombok.Data;
 
