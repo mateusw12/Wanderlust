@@ -7,18 +7,17 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.mail.MessagingException;
 import javax.validation.Valid;
+import java.util.List;
 
 @Validated
 @RestController
 @RequestMapping("api/envio-email")
-@Tag(name = "Controle de envio de E-mail")
+@Tag(name = "Envio de E-mail")
 public class SendEmailController {
 
     @Autowired
@@ -26,8 +25,9 @@ public class SendEmailController {
 
     @PostMapping
     @Operation(summary = "Envia email")
-    public ResponseEntity<Email> sendEmail(@RequestBody @Valid Email email) throws MessagingException {
-        emailService.sendEmail(email);
+    public ResponseEntity<Email> sendEmail(@RequestBody @Valid Email email,
+                                           @RequestParam("attachment")List<MultipartFile> attachments) throws MessagingException {
+        emailService.sendEmail(email, attachments);
         return ResponseEntity.ok().build();
     }
 
