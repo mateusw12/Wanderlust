@@ -1,6 +1,8 @@
 package com.wanderlust.wanderlust.service.sendSms;
 
-import com.wanderlust.wanderlust.model.sendSms.SMS;
+import com.wanderlust.wanderlust.dto.sendSms.SmsDTO;
+import com.wanderlust.wanderlust.mapper.sendSms.SmsMapper;
+import com.wanderlust.wanderlust.model.sendSms.SmsModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.amazonaws.services.sns.AmazonSNS;
@@ -17,7 +19,11 @@ public class SmsService {
     @Autowired
     private AmazonSNS snsClient;
 
-    public String sendSMS(SMS sms) {
+    @Autowired
+    private SmsMapper smsMapper;
+
+    public String sendSMS(SmsDTO smsDTO) {
+        SmsModel smsModel = smsMapper.toEntity(smsDTO);
         Map<String, MessageAttributeValue> smsAttributes = new HashMap<>();
         smsAttributes.put("AWS.SNS.SMS.SenderID",
                 new MessageAttributeValue()
@@ -29,9 +35,9 @@ public class SmsService {
                         .withDataType("String"));
 
         PublishResult result = snsClient.publish(new PublishRequest()
-                .withMessage(sms.getMessage())
-                .withSubject(sms.getSubject())
-                .withPhoneNumber(sms.getPhoneNumber())
+                .withMessage(smsModel.getMessage())
+                .withSubject(smsModel.getSubject())
+                .withPhoneNumber(smsModel.getPhoneNumber())
                 .withMessageAttributes(smsAttributes));
         return result.getMessageId();
     }
