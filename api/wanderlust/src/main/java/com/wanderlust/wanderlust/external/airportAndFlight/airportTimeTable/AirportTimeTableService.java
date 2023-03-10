@@ -21,7 +21,7 @@ import java.util.List;
 @Service
 public class AirportTimeTableService {
 
-    private final String apiKey ="5e6bae4b07mshe77f32ea846bc94p149ec3jsn926370fa091c";
+    private final String apiKey ="";
 
     public List<AirportTimeTable> findAirports() throws JsonProcessingException {
         RestTemplate restTemplate = new RestTemplate();

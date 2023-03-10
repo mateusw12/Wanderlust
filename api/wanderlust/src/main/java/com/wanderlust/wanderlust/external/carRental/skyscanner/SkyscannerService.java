@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class SkyscannerService {
 
-    private final String apiKey = "d5075a53bemshe3df1656b7affc0p136397jsnf9c8d0f8ddbc";
+    private final String apiKey = "";
 
     public SkyscannerSearchLocation findSearchLocationCar(String cityName) {
         String cityNameFormat = cityName.replace(" ", "%20");
