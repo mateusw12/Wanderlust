@@ -17,7 +17,7 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class AirBnbService {
 
-    private final String apiKey = "5e6bae4b07mshe77f32ea846bc94p149ec3jsn926370fa091c";
+    private final String apiKey = "";
 
     public AirBnbLocation findSearchDestination(String cityName, String country) {
         String cityNameFormat = cityName.replace(" ", "%20");

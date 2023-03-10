@@ -15,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class WazeService {
 
-    private final String apiKey="d5075a53bemshe3df1656b7affc0p136397jsnf9c8d0f8ddbc";
+    private final String apiKey="";
 
     public WazeAlertAndJams findAlertAndJams(WazeAlertAndJamsFilter filter) {
         String apiUrl = "https://waze.p.rapidapi.com/alerts-and-jams?";

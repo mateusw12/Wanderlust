@@ -15,7 +15,7 @@ import java.util.List;
 @Service
 public class PricelineService {
 
-    private final String apiKey = "d5075a53bemshe3df1656b7affc0p136397jsnf9c8d0f8ddbc";
+    private final String apiKey = "";
 
     public List<PricelineSearchHotelLocation> findSearcHotelsLocations(String cityName, String searchType) {
         String cityNameFormat = cityName.replace(" ", "%20");

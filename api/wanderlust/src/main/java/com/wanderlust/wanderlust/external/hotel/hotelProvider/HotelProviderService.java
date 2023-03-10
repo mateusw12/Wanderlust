@@ -19,7 +19,7 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class HotelProviderService {
 
-    private final String apiKey = "d5075a53bemshe3df1656b7affc0p136397jsnf9c8d0f8ddbc";
+    private final String apiKey = "";
 
     public RegionSearch findRegionSearch(String cityName, String Country) {
         String cityNameFormat = cityName.replace(" ", "%20");
