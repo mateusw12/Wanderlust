@@ -1,6 +1,8 @@
 package com.wanderlust.wanderlust.service.sendEmail;
 
-import com.wanderlust.wanderlust.model.sendEmail.Email;
+import com.wanderlust.wanderlust.dto.sendEmail.EmailDTO;
+import com.wanderlust.wanderlust.mapper.sendEmail.EmailMapper;
+import com.wanderlust.wanderlust.model.sendEmail.EmailModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -19,13 +21,18 @@ public class EmailService {
     @Autowired
     private JavaMailSender mailSender;
 
-    public void sendEmail(Email email, List<MultipartFile> attachments) throws MessagingException {
+    @Autowired
+    private EmailMapper emailMapper;
+
+    public EmailDTO sendEmail(EmailDTO emailDTO, List<MultipartFile> attachments) throws MessagingException {
+        EmailModel emailModel = emailMapper.toEntity(emailDTO);
+
         MimeMessage mimeMessage = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
 
-        helper.setTo(email.getRecipient());
-        helper.setSubject(email.getSubject());
-        helper.setText(email.getBody(), true);
+        helper.setTo(emailModel.getRecipient());
+        helper.setSubject(emailModel.getSubject());
+        helper.setText(emailModel.getBody(), true);
 
         if(attachments.size() != 0) {
             for (MultipartFile attachment : attachments) {
@@ -39,8 +46,8 @@ public class EmailService {
                 helper.addAttachment(attachment.getOriginalFilename(), byteArrayResource);
             }
         }
-
         mailSender.send(mimeMessage);
+        return emailDTO;
     }
 
 }
