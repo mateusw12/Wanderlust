@@ -3,11 +3,12 @@ package com.wanderlust.wanderlust.model.sendEmail;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Data
-public class Email {
+public class EmailModel {
 
     @NotNull
     @NotBlank
@@ -21,7 +22,7 @@ public class Email {
 
     @NotNull
     @NotBlank
-    @javax.validation.constraints.Email
+    @Email
     public String recipient;
 
 }

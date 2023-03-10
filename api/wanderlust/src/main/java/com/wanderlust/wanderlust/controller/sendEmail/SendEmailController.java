@@ -1,11 +1,10 @@
 package com.wanderlust.wanderlust.controller.sendEmail;
 
-import com.wanderlust.wanderlust.model.sendEmail.Email;
+import com.wanderlust.wanderlust.dto.sendEmail.EmailDTO;
 import com.wanderlust.wanderlust.service.sendEmail.EmailService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,10 +24,9 @@ public class SendEmailController {
 
     @PostMapping
     @Operation(summary = "Envia email")
-    public ResponseEntity<Email> sendEmail(@RequestBody @Valid Email email,
-                                           @RequestParam("attachment")List<MultipartFile> attachments) throws MessagingException {
-        emailService.sendEmail(email, attachments);
-        return ResponseEntity.ok().build();
+    public EmailDTO sendEmail(@RequestBody @Valid EmailDTO emailDTO,
+                              @RequestParam("attachment")List<MultipartFile> attachments) throws MessagingException {
+        return emailService.sendEmail(emailDTO, attachments);
     }
 
 }
