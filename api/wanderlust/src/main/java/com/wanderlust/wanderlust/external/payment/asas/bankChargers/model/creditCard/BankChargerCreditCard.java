@@ -1,8 +1,8 @@
 package com.wanderlust.wanderlust.external.payment.asas.bankChargers.model.creditCard;
 
 import com.fasterxml.jackson.databind.DatabindException;
-import com.wanderlust.wanderlust.validator.user.decorator.creditCard.CreditCard;
-import com.wanderlust.wanderlust.validator.user.decorator.futureDate.FutureDate;
+import com.wanderlust.wanderlust.validator.decorator.creditCard.CreditCard;
+import com.wanderlust.wanderlust.validator.decorator.futureDate.FutureDate;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 

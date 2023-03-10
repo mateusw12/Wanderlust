@@ -1,4 +1,4 @@
-package com.wanderlust.wanderlust.validator.user.decorator.futureDate;
+package com.wanderlust.wanderlust.validator.decorator.phoneNumber;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -9,12 +9,13 @@ import java.lang.annotation.Target;
 
 @Target({ ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = { FutureDateValidator.class })
-public @interface FutureDate {
+@Constraint(validatedBy = { PhoneNumberValidator.class })
+public @interface PhoneNumber {
 
-    String message() default "A data informada deve ser maior que a data atual";
+    String message() default "O número de telefone informado é inválido";
 
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
+
 }

@@ -1,4 +1,4 @@
-package com.wanderlust.wanderlust.validator.user.decorator.phoneNumber;
+package com.wanderlust.wanderlust.validator.decorator.phoneNumber;
 
 import org.springframework.stereotype.Component;
 

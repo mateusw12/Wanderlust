@@ -1,6 +1,6 @@
 package com.wanderlust.wanderlust.external.payment.asas.bankChargers.model.charger;
 
-import com.wanderlust.wanderlust.validator.user.decorator.futureDate.FutureDate;
+import com.wanderlust.wanderlust.validator.decorator.futureDate.FutureDate;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;

@@ -1,4 +1,4 @@
-package com.wanderlust.wanderlust.validator.user.decorator.futureDate;
+package com.wanderlust.wanderlust.validator.decorator.futureDate;
 
 import org.springframework.stereotype.Component;
 

@@ -1,4 +1,4 @@
-package com.wanderlust.wanderlust.validator.user.decorator.futureYear;
+package com.wanderlust.wanderlust.validator.decorator.futureYear;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
