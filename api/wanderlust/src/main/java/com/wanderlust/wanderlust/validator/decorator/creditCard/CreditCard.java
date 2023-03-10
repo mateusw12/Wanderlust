@@ -1,4 +1,4 @@
-package com.wanderlust.wanderlust.validator.user.decorator.creditCard;
+package com.wanderlust.wanderlust.validator.decorator.creditCard;
 
 
 import javax.validation.Constraint;

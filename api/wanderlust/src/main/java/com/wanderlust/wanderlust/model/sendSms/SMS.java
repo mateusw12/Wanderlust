@@ -1,6 +1,6 @@
 package com.wanderlust.wanderlust.model.sendSms;
 
-import com.wanderlust.wanderlust.validator.user.decorator.phoneNumber.PhoneNumber;
+import com.wanderlust.wanderlust.validator.decorator.phoneNumber.PhoneNumber;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 

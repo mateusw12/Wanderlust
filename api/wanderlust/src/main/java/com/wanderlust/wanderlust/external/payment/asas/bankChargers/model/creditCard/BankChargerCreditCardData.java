@@ -1,6 +1,6 @@
 package com.wanderlust.wanderlust.external.payment.asas.bankChargers.model.creditCard;
 
-import com.wanderlust.wanderlust.validator.user.decorator.futureYear.FutureYear;
+import com.wanderlust.wanderlust.validator.decorator.futureYear.FutureYear;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
