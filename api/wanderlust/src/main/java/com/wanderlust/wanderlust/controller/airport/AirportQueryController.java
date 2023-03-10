@@ -5,9 +5,9 @@ import com.wanderlust.wanderlust.external.airportAndFlight.aeroDataBox.AeroDataB
 import com.wanderlust.wanderlust.external.airportAndFlight.brazilianAirlineData.BrazilianArlineDataService;
 import com.wanderlust.wanderlust.external.airportAndFlight.brazilianAirlineData.model.BrazilianAirlineDataFilter;
 import com.wanderlust.wanderlust.external.airportAndFlight.brazilianAirlineData.model.BrazilianArilineData;
-import com.wanderlust.wanderlust.external.airportAndFlight.model.aiportInfo.Airport;
-import com.wanderlust.wanderlust.external.airportAndFlight.model.aiportRoutesDailyFlight.AiportRoutesDailyFlight;
-import com.wanderlust.wanderlust.external.airportAndFlight.model.airportSearchResult.AirportSearchResult;
+import com.wanderlust.wanderlust.external.airportAndFlight.aeroDataBox.model.aiportInfo.Airport;
+import com.wanderlust.wanderlust.external.airportAndFlight.aeroDataBox.model.aiportRoutesDailyFlight.AiportRoutesDailyFlight;
+import com.wanderlust.wanderlust.external.airportAndFlight.aeroDataBox.model.airportSearchResult.AirportSearchResult;
 import com.wanderlust.wanderlust.external.airportAndFlight.airportTimeTable.AirportTimeTableService;
 import com.wanderlust.wanderlust.external.airportAndFlight.airportTimeTable.model.airportCity.AirportCity;
 import com.wanderlust.wanderlust.external.airportAndFlight.airportTimeTable.model.airportCountry.AirportCountry;

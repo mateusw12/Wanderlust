@@ -1,8 +1,8 @@
 package com.wanderlust.wanderlust.external.airportAndFlight.aeroDataBox;
 
-import com.wanderlust.wanderlust.external.airportAndFlight.model.aiportRoutesDailyFlight.AiportRoutesDailyFlight;
-import com.wanderlust.wanderlust.external.airportAndFlight.model.aiportInfo.Airport;
-import com.wanderlust.wanderlust.external.airportAndFlight.model.airportSearchResult.AirportSearchResult;
+import com.wanderlust.wanderlust.external.airportAndFlight.aeroDataBox.model.aiportRoutesDailyFlight.AiportRoutesDailyFlight;
+import com.wanderlust.wanderlust.external.airportAndFlight.aeroDataBox.model.aiportInfo.Airport;
+import com.wanderlust.wanderlust.external.airportAndFlight.aeroDataBox.model.airportSearchResult.AirportSearchResult;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.http.HttpHeaders;
