@@ -2,7 +2,7 @@
 
 ## Descrição
 
-* A API de viagens é projetada para fornecer uma interface de programação de aplicativos (API) para gerenciar os dados de uma padaria. 
+* A API de viagens é projetada para fornecer uma interface de programação de aplicativos (API) para gerenciar os dados de uma agencia de viagens. 
 * Ela permite que os desenvolvedores criem aplicativos que possam realizar operações CRUD (criar, ler, atualizar e excluir) em dados de viagens, como reservas, usuarios. 
 * Inegração com api de pagamento, alugueis de hoteis, carros e passagens aereas. 
 * A API é segura, usando o padrão de segurança OAuth2, e está disponível em diferentes formatos, como JSON e XML.
