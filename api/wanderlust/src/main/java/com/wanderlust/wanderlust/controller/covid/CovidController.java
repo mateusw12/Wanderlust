@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 @Validated
 @RestController
 @RequestMapping("api/covid")
@@ -19,8 +22,14 @@ public class CovidController {
 
     @GetMapping("/country/{country}")
     @Operation(summary = "Consulta dados sobre covid por país")
-    public CovidStatistics findAll(@PathVariable String country) {
+    public CovidStatistics findStatisticsCountry(@PathVariable @NotNull @NotBlank String country) {
         return covidService.findStatisticsCountry(country);
+    }
+
+    @GetMapping("/country")
+    @Operation(summary = "Consulta dados sobre covid de todos os países")
+    public CovidStatistics findStatistics() {
+        return covidService.findStatistics();
     }
 
 }

@@ -39,4 +39,25 @@ public class CovidService {
         return covidStatistics;
     }
 
+    public CovidStatistics findStatistics() {
+        String apiUrl = "https://covid-193.p.rapidapi.com/statistics";
+
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+
+        headers.set("X-RapidAPI-Key", apiKey);
+        headers.set("X-RapidAPI-Host", "covid-193.p.rapidapi.com");
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+
+        ResponseEntity<CovidStatistics> response;
+        response = restTemplate.exchange(
+                apiUrl,
+                HttpMethod.GET,
+                entity,
+                CovidStatistics.class
+        );
+        CovidStatistics covidStatistics = response.getBody();
+        return covidStatistics;
+    }
+
 }
