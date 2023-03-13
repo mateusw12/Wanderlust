@@ -2,6 +2,7 @@ package com.wanderlust.wanderlust.external.weatherForecast;
 
 import com.wanderlust.wanderlust.external.weatherForecast.model.WeatherForecast;
 import com.wanderlust.wanderlust.external.weatherForecast.model.filter.WeatherForecastFilter;
+import com.wanderlust.wanderlust.external.weatherForecast.model.filter.WeatherForecastHistoricFilter;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -15,20 +16,56 @@ public class WeatherForecastService {
     private final String apiKey = "";
 
     public WeatherForecast forecast(WeatherForecastFilter filter) {
-        String apiUrl = "https://weatherapi-com.p.rapidapi.com/forecast.json?&lang=pt";
+        String apiUrl = "https://weatherapi-com.p.rapidapi.com/forecast.json?";
 
         if(filter.getCity() != null){
             apiUrl = apiUrl + "q="+filter.getCity();
         }
 
         if(filter.getDays() != null){
-            apiUrl = apiUrl + "&&days="+filter.getDays();
+            apiUrl = apiUrl + "&days="+filter.getDays();
         }
 
         apiUrl = apiUrl + "&lang=pt";
 
         if(filter.getDate() != null){
             apiUrl = apiUrl + "&dt="+filter.getDate();
+        }
+
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+
+        headers.set("X-RapidAPI-Key", apiKey);
+        headers.set("X-RapidAPI-Host", "weatherapi-com.p.rapidapi.com");
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+
+        ResponseEntity<WeatherForecast> response;
+        response = restTemplate.exchange(
+                apiUrl,
+                HttpMethod.GET,
+                entity,
+                WeatherForecast.class
+        );
+        WeatherForecast weatherForecast = response.getBody();
+        return weatherForecast;
+    }
+
+    public WeatherForecast historicWeather(WeatherForecastHistoricFilter filter) {
+        String apiUrl = "https://weatherapi-com.p.rapidapi.com/history.json?";
+
+        if(filter.getCity() != null){
+            apiUrl = apiUrl + "q="+filter.getCity();
+        }
+
+        if(filter.getDate() != null){
+            apiUrl = apiUrl + "&dt="+filter.getDate();
+        }
+
+        apiUrl = apiUrl + "&lang=pt";
+
+
+        if(filter.getEndDate() != null){
+            apiUrl = apiUrl + "&end_dt="+filter.getEndDate();
         }
 
         RestTemplate restTemplate = new RestTemplate();
