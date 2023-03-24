@@ -2,8 +2,8 @@ package com.wanderlust.wanderlust.model.role;
 
 public enum Role {
 
-    ADM("Admnistrador"),
-    USER("Usuario");
+    Adm("Administrador"),
+    User("Usuário");
 
     private final String description;
 
@@ -11,12 +11,12 @@ public enum Role {
         this.description = description;
     }
 
-    public String getDescription() {
+    public String getValue() {
         return description;
     }
 
-    public static Role getEnumValue(String description) {
-        return Role.valueOf(description);
+    @Override
+    public String toString() {
+        return description;
     }
-
 }
