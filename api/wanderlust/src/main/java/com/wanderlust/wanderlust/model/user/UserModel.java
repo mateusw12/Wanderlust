@@ -1,6 +1,8 @@
 package com.wanderlust.wanderlust.model.user;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.wanderlust.wanderlust.converter.role.RoleConverter;
+import com.wanderlust.wanderlust.model.role.Role;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
@@ -8,7 +10,6 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
 import java.io.Serializable;
 
 @Data
@@ -49,9 +50,9 @@ public class UserModel implements Serializable {
     public Boolean isActive;
 
     @NotNull
-    @NotBlank
+    @Convert(converter = RoleConverter.class)
     @Column(name="perfil", nullable = false, length = 100)
-    public String role;
+    public Role role;
 
     @Length(max = 15)
     @NotBlank

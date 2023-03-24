@@ -19,7 +19,7 @@ public class UserMapper {
                 userModel.getEmail(),
                 userModel.getCep(),
                 userModel.getPassword(),
-                Role.getEnumValue(userModel.getRole()),
+                userModel.getRole(),
                 userModel.getIsActive());
     }
 
@@ -39,7 +39,7 @@ public class UserMapper {
         userModel.setPassword(userDTO.password());
         userModel.setIsActive(userDTO.isActive());
         userModel.setUserName(userDTO.userName());
-        userModel.setRole(userDTO.role().getDescription());
+        userModel.setRole(userDTO.role());
         return userModel;
     }
 
